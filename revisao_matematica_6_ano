@@ -48,7 +48,6 @@
     background-position: 0 190px;
   }
   .notebook::before{
-    /* red margin line */
     content:"";
     position:absolute;
     top:0; bottom:0; left:52px;
@@ -69,7 +68,6 @@
     background: radial-gradient(circle at 35% 30%, #fff, var(--ring-metal) 55%, #8b95a8 100%);
     box-shadow: 0 2px 4px rgba(0,0,0,0.25), inset 0 0 0 6px var(--paper);
   }
-
   header.hero{
     padding-bottom:18px;
     border-bottom:2px dashed #C7B8A0;
@@ -98,8 +96,6 @@
   .subtitle{
     font-size:16px; color:var(--ink-soft); max-width:640px; line-height:1.5;
   }
-
-  /* Tabs styled as sticky index tabs */
   .tabs{
     display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 26px;
   }
@@ -125,17 +121,14 @@
   .tab[data-tab="razao"]{ background:var(--blue); }
   .tab[data-tab="grandezas"]{ background:var(--purple); }
   .tab[data-tab="quiz"]{ background:var(--green); }
-
   section.panel{ display:none; animation:fadeIn .35s ease; }
   section.panel.active{ display:block; }
   @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
-
   h2.section-title{
     font-family:'Fredoka', sans-serif; font-size:24px; font-weight:600;
     margin:4px 0 4px; display:flex; align-items:center; gap:10px;
   }
   .lead{ color:var(--ink-soft); margin:0 0 20px; line-height:1.55; max-width:680px;}
-
   .card{
     background:#fff;
     border:1.5px solid #E7DFCF;
@@ -151,10 +144,8 @@
     display:inline-block; font-weight:700; font-size:14.5px;
     color:var(--ink);
   }
-
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   @media (max-width:680px){ .grid2{ grid-template-columns:1fr; } }
-
   label{ font-size:13.5px; font-weight:700; color:var(--ink-soft); display:block; margin-bottom:4px;}
   input[type=number], input[type=text], select{
     width:100%; padding:9px 10px; border-radius:8px; border:1.5px solid #D9D2C0;
@@ -164,7 +155,6 @@
   input:focus, select:focus{ outline:2px solid var(--coral); outline-offset:1px; }
   .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; margin-bottom:12px;}
   .row > div{ flex:1; min-width:120px;}
-
   button.action{
     font-family:'Fredoka', sans-serif; font-weight:600; font-size:14.5px;
     background:var(--ink); color:#fff; border:none; border-radius:8px;
@@ -174,7 +164,6 @@
   button.action:hover{ transform:translateY(-1px); }
   button.action:active{ transform:translateY(1px); box-shadow:0 1px 0 #0f1526; }
   button.action.coral{ background:var(--coral); box-shadow:0 3px 0 var(--coral-dark); }
-
   .result{
     margin-top:12px; padding:12px 14px; border-radius:8px;
     background:var(--green-bg); border:1.5px solid #BFE3CE;
@@ -183,8 +172,6 @@
   }
   .result.show{ display:block; }
   .result .big{ font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600; color:var(--green); }
-
-  /* Practice questions */
   .question{
     border-top:1px dashed #DDD3BC; padding-top:14px; margin-top:14px;
   }
@@ -197,14 +184,10 @@
   }
   .feedback.correct{ background:var(--green-bg); color:var(--green); display:block; }
   .feedback.wrong{ background:var(--wrong-bg); color:var(--wrong); display:block; }
-
-  /* Sticky note answer key toggle */
   details.key{
     margin-top:10px; font-size:13.5px; color:var(--ink-soft);
   }
   details.key summary{ cursor:pointer; font-weight:700; color:var(--coral-dark);}
-
-  /* Quiz */
   .quiz-q{ margin-bottom:22px; }
   .quiz-opts{ display:grid; gap:8px; margin-top:10px; }
   .opt{
@@ -217,15 +200,12 @@
   .opt.picked-wrong{ background:var(--wrong-bg); border-color:var(--wrong); color:var(--wrong); }
   .opt.reveal-correct{ background:var(--green-bg); border-color:var(--green); }
   .opt[disabled]{ cursor:default; }
-
   #quiz-score-box{
     text-align:center; padding:26px; border-radius:12px; background:var(--ink); color:#fff;
     display:none;
   }
   #quiz-score-box .num{ font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700; color:var(--yellow);}
   #quiz-score-box.show{ display:block; }
-
-  /* Visual percentage grid (100 squares) */
   .visual-wrap{ display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
   .grid100{
     display:grid; grid-template-columns:repeat(10,1fr); gap:3px;
@@ -246,8 +226,6 @@
     font-family:'Fredoka',sans-serif; font-weight:700; font-size:34px; color:var(--coral-dark);
   }
   .pct-sub{ font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--ink-soft); }
-
-  /* Cinema seats visual */
   .seats-toolbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
   .seats-stats{ font-family:'JetBrains Mono',monospace; font-size:14.5px; }
   .seats-stats .pct{ font-family:'Fredoka',sans-serif; font-weight:700; font-size:22px; color:var(--coral-dark); }
@@ -262,8 +240,6 @@
   .seat:hover{ transform:scale(1.15); }
   .seat.occ{ background:var(--coral); }
   @media (max-width:560px){ .seats-grid{ grid-template-columns:repeat(15,1fr);} }
-
-  /* Price split bar (desconto/acréscimo) */
   .price-bar-wrap{ margin-top:16px; }
   .price-bar{ display:flex; height:36px; border-radius:8px; overflow:hidden; box-shadow:inset 0 0 0 1.5px #D9D2C0; }
   .price-bar .seg{
@@ -274,46 +250,32 @@
   .price-bar .seg.keep{ background:var(--green); }
   .price-bar .seg.change{ background:var(--coral); }
   .price-bar-caption{ display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); margin-top:6px; }
-
-  /* Ratio comparison bars */
   .ratio-bars-wrap{ margin-top:16px; display:flex; flex-direction:column; gap:12px; }
   .ratio-bar-label{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--ink-soft); margin-bottom:4px; }
   .ratio-bar{ display:flex; gap:3px; }
   .ratio-bar .seg{ flex:1; height:28px; border-radius:4px; background:#EDE7D6; transition:background .15s; }
   .ratio-bar .seg.on{ background:var(--blue); }
-
-  /* Velocity track */
   .track-wrap{ margin-top:16px; }
   .track{ position:relative; height:38px; background:#EDE7D6; border-radius:20px; overflow:hidden; }
   .track .road-car{ position:absolute; top:4px; left:4px; font-size:24px; transition:left 2.2s cubic-bezier(.4,0,.2,1); }
   .track .flag{ position:absolute; right:10px; top:7px; font-size:18px; }
   .track-caption{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); margin-top:6px; }
-
-  /* Vazão tank */
   .tank-wrap{ margin-top:16px; display:flex; align-items:flex-end; gap:16px; }
   .tank{ width:64px; height:100px; border:2.5px solid var(--ink); border-radius:6px 6px 12px 12px; position:relative; overflow:hidden; background:#F3F0E6; flex-shrink:0; }
   .tank .water{ position:absolute; bottom:0; left:0; right:0; background:linear-gradient(180deg,#8FCBE6,#4A9BC4); height:0%; transition:height 1.8s ease; }
   .tank-caption{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--ink-soft); }
-
-  /* Density gauge */
   .gauge-wrap{ margin-top:16px; }
   .gauge{ position:relative; height:14px; border-radius:8px; background:linear-gradient(90deg,#BFE3CE,#FFE29A,#F6B0A6); }
   .gauge .pointer{ position:absolute; top:-9px; width:3px; height:32px; background:var(--ink); border-radius:2px; transition:left .4s ease; }
   .gauge-labels{ display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:5px; }
-
-  /* Escala ruler */
   .ruler-wrap{ margin-top:16px; display:flex; align-items:center; gap:12px; }
   .ruler-seg{ height:18px; border-radius:4px; }
   .ruler-seg.mapa{ width:50px; background:var(--purple); }
   .ruler-seg.real{ width:220px; background:repeating-linear-gradient(90deg, var(--blue) 0 3px, transparent 3px 22px); border-radius:4px; }
   .ruler-caption{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); }
-
-  /* Pizza visuals for fraction types & simplification */
   .pizzas-row{ display:flex; gap:16px; flex-wrap:wrap; margin:14px 0 6px; }
   .pizza{ width:96px; height:96px; border-radius:50%; border:3px solid var(--ink); box-shadow:0 2px 0 rgba(31,42,68,0.08); }
   .pizza-label{ text-align:center; font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:6px; color:var(--ink-soft); }
-
-  /* Division steps reveal */
   .dv-steps{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
   .dv-step{
     padding:12px 16px; border-radius:9px; background:#F3F0E6; border:1.5px solid #E7DFCF;
@@ -324,31 +286,7 @@
   .dv-step .tag{ font-family:'Fredoka',sans-serif; font-weight:600; color:var(--coral-dark); display:block; margin-bottom:3px; font-size:13px; }
   .dv-step:last-child{ background:var(--green-bg); border-color:#BFE3CE; }
   .dv-step:last-child .tag{ color:var(--green); }
-
-  .signature-calc{
-    display:flex; gap:22px; flex-wrap:wrap; align-items:flex-start;
-  }
-  .calc-body{
-    background:#2B3350; border-radius:14px; padding:16px; width:230px;
-    box-shadow: var(--shadow);
-  }
-  .calc-screen{
-    background:#B9D6C4; border-radius:6px; padding:10px 12px; font-family:'JetBrains Mono',monospace;
-    font-size:22px; text-align:right; color:#12331f; margin-bottom:10px; min-height:34px; letter-spacing:0.02em;
-  }
-  .calc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
-  .calc-btn{
-    padding:10px 0; border-radius:6px; border:none; font-family:'JetBrains Mono',monospace;
-    font-weight:700; font-size:14px; cursor:pointer; background:#3C4568; color:#fff;
-  }
-  .calc-btn.op{ background:var(--coral); }
-  .calc-btn.eq{ background:var(--green); grid-column:span 2; }
-  .calc-btn.clear{ background:var(--wrong); }
-  .calc-note{ flex:1; min-width:220px; }
-
-  footer.foot{
-    margin-top:30px; text-align:center; color:var(--ink-soft); font-size:12.5px;
-  }
+  footer.foot{ margin-top:30px; text-align:center; color:var(--ink-soft); font-size:12.5px; }
 </style>
 </head>
 <body>
@@ -379,7 +317,6 @@
   <section class="panel active" id="fracoes">
     <h2 class="section-title">📗 Frações e porcentagem</h2>
     <p class="lead">Porcentagem é uma razão que compara uma parte a um total de <strong>100 partes</strong>. Toda fração pode virar porcentagem: basta encontrar uma fração equivalente com denominador 100.</p>
-
     <div class="card">
       <h3>🔲 Veja a porcentagem acontecer</h3>
       <p class="lead" style="margin-bottom:6px;">Porcentagem é sempre "de cada 100". Arraste o controle e observe quantos quadradinhos, de um total de 100, ficam coloridos.</p>
@@ -395,13 +332,11 @@
         </div>
       </div>
     </div>
-
     <div class="card">
       <h3>Exemplo do caderno</h3>
       <p>Em um cinema há 250 poltronas. 140 foram ocupadas. Qual a porcentagem ocupada?</p>
       <span class="formula">140/250 = 14/25 = 56/100 = 56%</span>
     </div>
-
     <div class="card">
       <h3>🎬 Poltronas do cinema — clique para ocupar</h3>
       <p class="lead" style="margin-bottom:10px;">São 250 poltronas (25 fileiras de 10). Clique nas poltronas para marcar como ocupadas e veja a porcentagem mudar em tempo real — igual ao exemplo do livro.</p>
@@ -416,27 +351,17 @@
         &nbsp; <span id="seats-frac"></span>
       </p>
     </div>
-
     <div class="card">
       <h3>🔄 Conversor de fração para porcentagem</h3>
       <p class="lead" style="margin-bottom:12px;">Digite uma fração e veja a porcentagem e a fração irredutível na hora.</p>
       <div class="row">
-        <div>
-          <label>Numerador</label>
-          <input type="number" id="frac-num" value="140">
-        </div>
+        <div><label>Numerador</label><input type="number" id="frac-num" value="140"></div>
         <div style="max-width:20px; text-align:center; padding-bottom:8px; font-weight:700;">/</div>
-        <div>
-          <label>Denominador</label>
-          <input type="number" id="frac-den" value="250">
-        </div>
-        <div style="flex:0;">
-          <button class="action" onclick="convertFraction()">Converter</button>
-        </div>
+        <div><label>Denominador</label><input type="number" id="frac-den" value="250"></div>
+        <div style="flex:0;"><button class="action" onclick="convertFraction()">Converter</button></div>
       </div>
       <div class="result" id="frac-result"></div>
     </div>
-
     <div class="card">
       <h3>✏️ Pratique — escreva a fração irredutível</h3>
       <div class="question">
@@ -468,1053 +393,8 @@
         <p>Escreva a porcentagem sobre 100 (ex: 60/100) e divida o numerador e o denominador pelo mesmo número várias vezes, até não dar mais para simplificar. 60/100 → ÷20 → 3/5.</p>
       </details>
     </div>
-
     <div class="card">
       <h3>🧠 Calcule mentalmente uma porcentagem de um valor</h3>
       <p class="lead" style="margin-bottom:12px;">Dica: ache 10% (divida por 10) e use esse valor para montar as outras porcentagens.</p>
       <div class="row">
-        <div><label>Porcentagem (%)</label><input type="number" id="pct-a" value="30"></div>
-        <div><label>de</label><input type="number" id="pct-b" value="200"></div>
-        <div style="flex:0;"><button class="action" onclick="calcPercentOf()">Calcular</button></div>
-      </div>
-      <div class="result" id="pct-result"></div>
-    </div>
-  </section>
-
-  <!-- TIPOS, SIMPLIFICAR E DIVIDIR -->
-  <section class="panel" id="tipos">
-    <h2 class="section-title">🍕 Tipos de fração, simplificar e dividir</h2>
-    <p class="lead">Vamos usar pizzas para deixar tudo mais fácil de enxergar!</p>
-
-    <div class="card">
-      <h3>🍕 Que tipo de fração é essa?</h3>
-      <p class="lead" style="margin-bottom:10px;">Escolha o numerador e o denominador e veja as pizzas se formarem na hora.</p>
-      <div class="row">
-        <div><label>Numerador</label><input type="number" id="tp-num" min="0" value="3" oninput="renderTypePizza()"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador</label><input type="number" id="tp-den" min="1" value="4" oninput="renderTypePizza()"></div>
-      </div>
-      <div class="pizzas-row" id="tp-pizzas"></div>
-      <div class="result show" id="tp-classification"></div>
-    </div>
-
-    <div class="card">
-      <h3>✂️ Simplifique a fração, passo a passo</h3>
-      <p class="lead" style="margin-bottom:10px;">Toque num botão de divisão para dividir o numerador <strong>e</strong> o denominador ao mesmo tempo. Repita até a fração não poder mais simplificar!</p>
-      <div class="pct-readout" id="sp-readout">12/18</div>
-      <div class="ratio-bar" id="sp-bar" style="margin-top:10px; max-width:480px;"></div>
-      <div class="seats-toolbar" id="sp-divisor-btns" style="margin-top:14px;"></div>
-      <div class="feedback" id="sp-feedback"></div>
-      <div class="q-text" style="margin-top:16px;">Ou comece com a sua própria fração:</div>
-      <div class="row">
-        <div><label>Numerador</label><input type="number" id="sp-num" value="12"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador</label><input type="number" id="sp-den" value="18"></div>
-        <div style="flex:0;"><button class="action" onclick="startSimplify()">Começar</button></div>
-      </div>
-      <div class="q-text" style="margin-top:12px;">Ou tente com estas:</div>
-      <div class="seats-toolbar">
-        <button class="action coral" onclick="loadSimplify(12,18)">12/18</button>
-        <button class="action coral" onclick="loadSimplify(20,30)">20/30</button>
-        <button class="action coral" onclick="loadSimplify(45,60)">45/60</button>
-        <button class="action coral" onclick="loadSimplify(8,20)">8/20</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>➗ Dividir frações: guarda, troca e inverte</h3>
-      <p class="lead" style="margin-bottom:10px;">Para dividir uma fração por outra, existe um truque de 3 passos que sempre funciona.</p>
-      <div class="row">
-        <div><label>Numerador 1</label><input type="number" id="dv-a" value="2"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador 1</label><input type="number" id="dv-b" value="3"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">÷</div>
-        <div><label>Numerador 2</label><input type="number" id="dv-c" value="4"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador 2</label><input type="number" id="dv-d" value="5"></div>
-      </div>
-      <button class="action coral" onclick="startDivision()">Mostrar os passos</button>
-      <div class="dv-steps" id="dv-steps"></div>
-      <details class="key">
-        <summary>Por que isso funciona?</summary>
-        <p>Dividir por uma fração é o mesmo que multiplicar pelo seu "de cabeça pra baixo" (o inverso). Por isso: <strong>guardamos</strong> a primeira fração, <strong>trocamos</strong> o ÷ por ×, e <strong>invertemos</strong> a segunda fração.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- RESOLVA SUA LISTA -->
-  <section class="panel" id="lista">
-    <h2 class="section-title">📝 Resolva sua lista de exercícios</h2>
-    <p class="lead">Listas de prova costumam repetir os mesmos "formatos" de questão com números diferentes. Encontre abaixo a ferramenta parecida com a sua pergunta, preencha os dados do seu enunciado e veja o passo a passo.</p>
-
-    <div class="card">
-      <h3>🧮 Operações com frações</h3>
-      <p class="lead" style="margin-bottom:10px;">Para questões do tipo <em>"realize as operações abaixo, expressando o resultado como fração irredutível"</em>.</p>
-      <div class="row">
-        <div><label>Numerador 1</label><input type="number" id="fo-n1" value="8"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador 1</label><input type="number" id="fo-d1" value="5"></div>
-        <div>
-          <label>Operação</label>
-          <select id="fo-op">
-            <option value="mais">+</option>
-            <option value="menos">−</option>
-            <option value="vezes" selected>×</option>
-            <option value="dividido">÷</option>
-          </select>
-        </div>
-        <div><label>Numerador 2</label><input type="number" id="fo-n2" value="7"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador 2</label><input type="number" id="fo-d2" value="10"></div>
-      </div>
-      <button class="action" onclick="calcFracOp()">Resolver</button>
-      <div class="result" id="fo-result"></div>
-    </div>
-
-    <div class="card">
-      <h3>🥧 Fração ou porcentagem de um total (o que sobra)</h3>
-      <p class="lead" style="margin-bottom:10px;">Para questões do tipo <em>"após 20 horas a piscina está cheia com 5 mangueiras..."</em> ou <em>"apenas 30% permaneceram intactas, quantas foram quebradas?"</em></p>
-      <div class="row">
-        <div><label>Total</label><input type="number" id="ft-total" value="120"></div>
-        <div>
-          <label>Você sabe o quanto foi usado em...</label>
-          <select id="ft-type" onchange="toggleFtType()">
-            <option value="fracao">Fração</option>
-            <option value="porcentagem">Porcentagem</option>
-          </select>
-        </div>
-      </div>
-      <div class="row" id="ft-frac-row">
-        <div><label>Numerador</label><input type="number" id="ft-num" value="1"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador</label><input type="number" id="ft-den" value="4"></div>
-      </div>
-      <div class="row" id="ft-pct-row" style="display:none;">
-        <div><label>Porcentagem (%)</label><input type="number" id="ft-pct" value="30"></div>
-      </div>
-      <button class="action" onclick="calcFracaoTotal()">Calcular</button>
-      <div class="result" id="ft-result"></div>
-      <div class="price-bar-wrap">
-        <div class="price-bar" id="ft-bar"></div>
-        <div class="price-bar-caption"><span>🟧 usado / danificado</span><span>🟩 restante / intacto</span></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>⚖️ Razão entre duas quantidades</h3>
-      <p class="lead" style="margin-bottom:10px;">Para questões do tipo <em>"qual é a razão entre o número de estudantes de outros bairros e o total de estudantes?"</em></p>
-      <div class="row">
-        <div><label>Quantidade A</label><input type="number" id="rt-a" value="180"></div>
-        <div><label>Quantidade B</label><input type="number" id="rt-b" value="900"></div>
-      </div>
-      <button class="action" onclick="calcRazaoSimples()">Calcular razão</button>
-      <div class="result" id="rt-result"></div>
-    </div>
-
-    <div class="card">
-      <h3>🚚 Descubra o valor que falta (velocidade, vazão, densidade ou escala)</h3>
-      <p class="lead" style="margin-bottom:10px;">Para questões de tanque enchendo, torneira, mapas ou velocidade de carro/animal. Escolha a grandeza, preencha <strong>dois</strong> valores e deixe o terceiro em branco.</p>
-      <div class="row">
-        <div style="flex:2;">
-          <label>Qual grandeza?</label>
-          <select id="gu-type" onchange="setupGrandezaUnificada()">
-            <option value="velocidade">Velocidade = distância ÷ tempo</option>
-            <option value="vazao">Vazão = volume ÷ tempo</option>
-            <option value="densidade">Densidade = população ÷ área</option>
-            <option value="escala">Escala = distância no mapa ÷ distância real</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div><label id="gu-label-a">Distância (km)</label><input type="number" id="gu-a" placeholder="deixe em branco se for descobrir"></div>
-        <div><label id="gu-label-b">Tempo (h)</label><input type="number" id="gu-b" placeholder="deixe em branco se for descobrir"></div>
-        <div><label id="gu-label-c">Velocidade (km/h)</label><input type="number" id="gu-c" placeholder="deixe em branco se for descobrir"></div>
-      </div>
-      <button class="action coral" onclick="resolverGrandeza()">Descobrir o valor que falta</button>
-      <div class="result" id="gu-result"></div>
-    </div>
-
-    <div class="card">
-      <h3>💰 Porcentagem — três formatos de pergunta</h3>
-      <p class="lead" style="margin-bottom:10px;">Cobre "quanto é X% de Y", "que % uma parte representa do total" e "qual foi o desconto/aumento percentual entre dois preços".</p>
-      <div class="row">
-        <div style="flex:2;">
-          <label>O que você quer calcular?</label>
-          <select id="pm-mode" onchange="setupPercentMode()">
-            <option value="valor">Quanto é X% de um valor</option>
-            <option value="percentual">Que porcentagem uma parte representa do total</option>
-            <option value="variacao">Variação percentual entre dois valores (desconto/aumento)</option>
-          </select>
-        </div>
-      </div>
-      <div class="row" id="pm-fields"></div>
-      <button class="action coral" onclick="calcPercentMode()">Calcular</button>
-      <div class="result" id="pm-result"></div>
-    </div>
-
-    <div class="card">
-      <h3>🔢 Conversor porcentagem ↔ fração ↔ decimal</h3>
-      <p class="lead" style="margin-bottom:10px;">Para tabelas do tipo <em>"complete com porcentagem, fração irredutível e número decimal"</em>.</p>
-      <div class="row">
-        <div style="flex:2;">
-          <label>Você tem uma...</label>
-          <select id="cv-type" onchange="setupConverter()">
-            <option value="fracao">Fração</option>
-            <option value="porcentagem">Porcentagem</option>
-            <option value="decimal">Número decimal</option>
-          </select>
-        </div>
-      </div>
-      <div class="row" id="cv-fields"></div>
-      <button class="action" onclick="calcConverter()">Converter</button>
-      <div class="result" id="cv-result"></div>
-    </div>
-  </section>
-
-  <section class="panel" id="desconto">
-    <h2 class="section-title">🧮 Desconto e acréscimo</h2>
-    <p class="lead">Uma loja pode dar <strong>desconto</strong> (à vista) ou cobrar <strong>acréscimo</strong> (a prazo/juros). Em ambos os casos, primeiro calcule a porcentagem do valor e depois some ou subtraia do preço original.</p>
-
-    <div class="card">
-      <h3>Exemplo do caderno</h3>
-      <p>Televisão de R$ 1.900,00, comprada a prazo com 9% de acréscimo:</p>
-      <span class="formula">9% de 1900 = 171 → 1900 + 171 = R$ 2.071,00</span>
-    </div>
-
-    <div class="card">
-      <h3>💰 Calculadora de desconto / acréscimo</h3>
-      <div class="row">
-        <div><label>Preço original (R$)</label><input type="number" id="dc-preco" value="120"></div>
-        <div><label>Porcentagem (%)</label><input type="number" id="dc-pct" value="25"></div>
-        <div>
-          <label>Tipo</label>
-          <select id="dc-tipo">
-            <option value="desconto">Desconto</option>
-            <option value="acrescimo">Acréscimo</option>
-          </select>
-        </div>
-        <div style="flex:0;"><button class="action coral" onclick="calcDesconto()">Calcular</button></div>
-      </div>
-      <div class="result" id="dc-result"></div>
-      <div class="price-bar-wrap">
-        <div class="price-bar" id="dc-bar"></div>
-        <div class="price-bar-caption"><span>🟩 o que você paga</span><span>🟧 desconto/acréscimo</span></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>✏️ Pratique — loja em liquidação (25% de desconto)</h3>
-      <div class="question">
-        <div class="q-text">Camisa de R$ 120,00 → quantos reais de desconto?</div>
-        <div class="answer-row">
-          <span>R$</span><input type="number" id="d1" placeholder="0">
-          <button class="action" onclick="checkNumberAnswer('d1',30,'d1-fb','25% de 120 = (25/100) × 120 = 30.')">Conferir</button>
-        </div>
-        <div class="feedback" id="d1-fb"></div>
-      </div>
-      <div class="question">
-        <div class="q-text">Calça de R$ 160,00 → quantos reais de desconto?</div>
-        <div class="answer-row">
-          <span>R$</span><input type="number" id="d2" placeholder="0">
-          <button class="action" onclick="checkNumberAnswer('d2',40,'d2-fb','25% de 160 = (25/100) × 160 = 40.')">Conferir</button>
-        </div>
-        <div class="feedback" id="d2-fb"></div>
-      </div>
-      <div class="question">
-        <div class="q-text">Vestido de R$ 104,00 → quanto o consumidor paga à vista?</div>
-        <div class="answer-row">
-          <span>R$</span><input type="number" id="d3" placeholder="0">
-          <button class="action" onclick="checkNumberAnswer('d3',78,'d3-fb','O desconto é 25% de 104 = 26. Preço final = 104 − 26 = 78. Cuidado: essa pergunta pede o valor pago, não o desconto.')">Conferir</button>
-        </div>
-        <div class="feedback" id="d3-fb"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RAZÃO E PROPORÇÃO -->
-  <section class="panel" id="razao">
-    <h2 class="section-title">⚖️ Razão e proporção</h2>
-    <p class="lead"><strong>Razão</strong> é a comparação entre duas grandezas por meio de uma divisão (a/b). <strong>Proporção</strong> é a igualdade entre duas razões: a/b = c/d. Para achar um termo desconhecido, usamos a multiplicação cruzada.</p>
-
-    <div class="card">
-      <h3>Exemplo</h3>
-      <p>Uma receita usa 2 xícaras de farinha para 3 ovos. Para 9 ovos, quantas xícaras de farinha são necessárias?</p>
-      <span class="formula">2/3 = x/9  →  3x = 18  →  x = 6 xícaras</span>
-    </div>
-
-    <div class="card">
-      <h3>🔢 Resolva a proporção a/b = c/x</h3>
-      <div class="row">
-        <div><label>a</label><input type="number" id="rz-a" value="2"></div>
-        <div><label>b</label><input type="number" id="rz-b" value="3"></div>
-        <div><label>c</label><input type="number" id="rz-c" value="6"></div>
-        <div style="flex:0; padding-bottom:8px; font-weight:700;">= x</div>
-        <div style="flex:0;"><button class="action" onclick="solveProportion()">Resolver</button></div>
-      </div>
-      <div class="result" id="rz-result"></div>
-      <div class="ratio-bars-wrap" id="rz-bars"></div>
-    </div>
-
-    <div class="card">
-      <h3>✏️ Pratique</h3>
-      <div class="question">
-        <div class="q-text">Se 4 canetas custam R$ 10,00, quanto custam 10 canetas (mesma razão)?</div>
-        <div class="answer-row">
-          <span>R$</span><input type="number" id="r1" placeholder="0">
-          <button class="action" onclick="checkNumberAnswer('r1',25,'r1-fb','Cada caneta custa 10÷4 = R$ 2,50. Então 10 canetas custam 10 × 2,50 = R$ 25,00. Ou monte a proporção 4/10 = 10/x e resolva por multiplicação cruzada.')">Conferir</button>
-        </div>
-        <div class="feedback" id="r1-fb"></div>
-      </div>
-      <div class="question">
-        <div class="q-text">Num mapa, a razão é de 3 meninos para cada 5 meninas. Se há 15 meninas, quantos meninos há?</div>
-        <div class="answer-row">
-          <input type="number" id="r2" placeholder="0">
-          <button class="action" onclick="checkNumberAnswer('r2',9,'r2-fb','15 é 3 vezes 5 (5×3=15). Como a razão precisa se manter, multiplique também os meninos por 3: 3×3 = 9.')">Conferir</button>
-        </div>
-        <div class="feedback" id="r2-fb"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GRANDEZAS -->
-  <section class="panel" id="grandezas">
-    <h2 class="section-title">🚗 Velocidade, densidade, vazão e escala</h2>
-    <p class="lead">Essas quatro grandezas usam a mesma ideia: uma razão entre duas medidas diferentes.</p>
-
-    <div class="grid2">
-      <div class="card">
-        <h3>🚗 Velocidade</h3>
-        <span class="formula">v = distância ÷ tempo</span>
-        <div class="row" style="margin-top:14px;">
-          <div><label>Distância (km)</label><input type="number" id="v-d" value="180"></div>
-          <div><label>Tempo (h)</label><input type="number" id="v-t" value="3"></div>
-        </div>
-        <button class="action" onclick="calcVelocidade()">Calcular km/h</button>
-        <div class="result" id="v-result"></div>
-        <div class="track-wrap">
-          <div class="track"><span class="road-car" id="v-car">🚗</span><span class="flag">🏁</span></div>
-          <div class="track-caption" id="v-caption">Clique em calcular para animar o percurso</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>🧑‍🤝‍🧑 Densidade demográfica</h3>
-        <span class="formula">d = população ÷ área (km²)</span>
-        <div class="row" style="margin-top:14px;">
-          <div><label>População</label><input type="number" id="dd-p" value="90000"></div>
-          <div><label>Área (km²)</label><input type="number" id="dd-a" value="450"></div>
-        </div>
-        <button class="action" onclick="calcDensidade()">Calcular hab/km²</button>
-        <div class="result" id="dd-result"></div>
-        <div class="gauge-wrap">
-          <div class="gauge"><div class="pointer" id="dd-pointer" style="left:0%"></div></div>
-          <div class="gauge-labels"><span>baixa</span><span>média</span><span>alta</span></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>🚰 Vazão</h3>
-        <span class="formula">Vz = volume ÷ tempo</span>
-        <div class="row" style="margin-top:14px;">
-          <div><label>Volume (L)</label><input type="number" id="vz-v" value="600"></div>
-          <div><label>Tempo (min)</label><input type="number" id="vz-t" value="5"></div>
-        </div>
-        <button class="action" onclick="calcVazao()">Calcular L/min</button>
-        <div class="result" id="vz-result"></div>
-        <div class="tank-wrap">
-          <div class="tank"><div class="water" id="vz-water"></div></div>
-          <div class="tank-caption" id="vz-caption">O tanque enche conforme a vazão</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>🗺️ Escala</h3>
-        <span class="formula">escala = distância no mapa ÷ distância real</span>
-        <div class="row" style="margin-top:14px;">
-          <div><label>Distância no mapa (cm)</label><input type="number" id="es-m" value="4"></div>
-          <div><label>Distância real (km)</label><input type="number" id="es-r" value="20"></div>
-        </div>
-        <button class="action" onclick="calcEscala()">Calcular escala</button>
-        <div class="result" id="es-result"></div>
-        <div class="ruler-wrap">
-          <div class="ruler-seg mapa"></div>
-          <div class="ruler-seg real"></div>
-        </div>
-        <div class="ruler-caption">🟪 mapa &nbsp; 🟦 distância real (ilustrativo)</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>✏️ Pratique</h3>
-      <div class="question">
-        <div class="q-text">Um carro percorre 240 km em 4 horas. Qual é a velocidade média?</div>
-        <div class="answer-row">
-          <input type="number" id="g1" placeholder="0"><span>km/h</span>
-          <button class="action" onclick="checkNumberAnswer('g1',60,'g1-fb','Velocidade = distância ÷ tempo = 240 ÷ 4 = 60 km/h.')">Conferir</button>
-        </div>
-        <div class="feedback" id="g1-fb"></div>
-      </div>
-      <div class="question">
-        <div class="q-text">Uma cidade tem 60.000 habitantes em uma área de 300 km². Qual a densidade demográfica?</div>
-        <div class="answer-row">
-          <input type="number" id="g2" placeholder="0"><span>hab/km²</span>
-          <button class="action" onclick="checkNumberAnswer('g2',200,'g2-fb','Densidade = população ÷ área = 60.000 ÷ 300 = 200 hab/km².')">Conferir</button>
-        </div>
-        <div class="feedback" id="g2-fb"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUIZ -->
-  <section class="panel" id="quiz">
-    <h2 class="section-title">✅ Quiz final</h2>
-    <p class="lead">Misture tudo que você estudou. Ao final, veja sua pontuação.</p>
-    <div id="quiz-container"></div>
-    <div id="quiz-score-box">
-      <div>Sua pontuação</div>
-      <div class="num" id="quiz-score">0/0</div>
-      <button class="action" style="margin-top:10px;" onclick="restartQuiz()">Tentar novamente</button>
-    </div>
-  </section>
-
-  <footer class="foot">Feito para revisar antes da prova — bons estudos! 📐</footer>
-</div>
-
-<script>
-// ---------- TABS ----------
-document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
-
-// ---------- HELPERS ----------
-function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){ [a,b]=[b,a%b]; } return a || 1; }
-
-function showResult(id, html){
-  const el = document.getElementById(id);
-  el.innerHTML = html;
-  el.classList.add('show');
-}
-
-function checkNumberAnswer(inputId, correct, fbId, explanation, tolerance=0.5){
-  const val = parseFloat(document.getElementById(inputId).value);
-  const fb = document.getElementById(fbId);
-  if(isNaN(val)){ fb.className='feedback wrong'; fb.innerHTML='Digite um número.'; return; }
-  if(Math.abs(val-correct) <= tolerance){
-    fb.className='feedback correct'; fb.innerHTML='✅ Isso mesmo! Resposta: '+correct;
-  } else {
-    fb.className='feedback wrong';
-    fb.innerHTML = `❌ Ainda não é isso. Resposta certa: <strong>${correct}</strong>` +
-      (explanation ? `<div style="font-weight:400; margin-top:5px;">💡 ${explanation}</div>` : '');
-  }
-}
-
-function checkFractionAnswer(inputId, correct, explanation){
-  const raw = document.getElementById(inputId).value.trim().replace(/\s/g,'');
-  const fb = document.getElementById(inputId+'-fb');
-  const norm = f => {
-    const parts = f.split('/');
-    if(parts.length!==2) return null;
-    const n = parseInt(parts[0]), d = parseInt(parts[1]);
-    if(isNaN(n)||isNaN(d)||d===0) return null;
-    const g = gcd(n,d);
-    return (n/g)+'/'+(d/g);
-  };
-  const userNorm = norm(raw);
-  const correctNorm = norm(correct);
-  if(userNorm && userNorm===correctNorm){
-    fb.className='feedback correct'; fb.innerHTML='✅ Correto! '+correct;
-  } else {
-    fb.className='feedback wrong';
-    fb.innerHTML = `❌ Quase lá. Resposta certa: <strong>${correct}</strong>` +
-      (explanation ? `<div style="font-weight:400; margin-top:5px;">💡 ${explanation}</div>` : '');
-  }
-}
-
-// ---------- FRAÇÕES ----------
-function gridCellsHTML(percent){
-  const filled = Math.max(0, Math.min(100, Math.round(percent)));
-  let html = '';
-  for(let i=0;i<100;i++){ html += `<div class="cell${i<filled?' filled':''}"></div>`; }
-  return html;
-}
-
-function convertFraction(){
-  const num = parseFloat(document.getElementById('frac-num').value);
-  const den = parseFloat(document.getElementById('frac-den').value);
-  if(!den){ showResult('frac-result','Digite um denominador válido.'); return; }
-  const pct = (num/den*100);
-  const g = gcd(num,den);
-  const simpN = num/g, simpD = den/g;
-  const overflowNote = pct>100 ? ` (mais que o quadriculado inteiro — ${pct.toFixed(1)}% no total)` : '';
-  showResult('frac-result',
-    `<div class="visual-wrap" style="align-items:center;">
-       <div class="grid100 mini">${gridCellsHTML(pct)}</div>
-       <div>
-         <div class="big">${pct.toFixed(2).replace(/\.00$/,'')}%</div>
-         Fração irredutível: ${simpN}/${simpD}<br>
-         ${num}/${den} = ${simpN}/${simpD} = ${pct.toFixed(2).replace(/\.00$/,'')}/100${overflowNote}
-       </div>
-     </div>`);
-}
-
-// ---------- PIZZA VISUALS (fraction types) ----------
-function pizzaSliceHTML(filled, total){
-  if(total<=0) return '';
-  const step = 360/total;
-  let parts = [];
-  for(let i=0;i<total;i++){
-    const color = i<filled ? 'var(--coral)' : '#F3E9D2';
-    parts.push(`${color} ${(i*step).toFixed(2)}deg ${((i+1)*step).toFixed(2)}deg`);
-  }
-  return `<div><div class="pizza" style="background:conic-gradient(${parts.join(',')})"></div><div class="pizza-label">${filled}/${total}</div></div>`;
-}
-
-function renderTypePizza(){
-  const num = parseInt(document.getElementById('tp-num').value);
-  const den = parseInt(document.getElementById('tp-den').value);
-  const box = document.getElementById('tp-pizzas');
-  const out = document.getElementById('tp-classification');
-  if(!den || den<1 || isNaN(num) || num<0){ box.innerHTML=''; out.innerHTML='Digite um numerador e um denominador válidos (denominador maior que zero).'; return; }
-  const whole = Math.floor(num/den);
-  const rem = num % den;
-  let html = '';
-  const cappedWhole = Math.min(whole, 6); // avoid drawing dozens of pizzas
-  for(let i=0;i<cappedWhole;i++){ html += pizzaSliceHTML(den, den); }
-  if(rem>0 || whole===0){ html += pizzaSliceHTML(rem, den); }
-  if(whole>6){ html += `<div class="pizza-label" style="align-self:center;">... e mais ${whole-6} pizza(s) inteira(s)</div>`; }
-  box.innerHTML = html;
-
-  let cls;
-  if(num % den === 0){
-    cls = `🟢 <strong>Fração aparente</strong> — ${num}/${den} dá um número inteiro certinho: ${num/den}.`;
-  } else if(num < den){
-    cls = `🔵 <strong>Fração própria</strong> — o numerador é menor que o denominador: é menos que uma pizza inteira.`;
-  } else {
-    cls = `🟠 <strong>Fração imprópria</strong> — o numerador é maior que o denominador: é mais que uma pizza inteira! Como número misto: ${whole} inteiro${whole!==1?'s':''}${rem>0?` e ${rem}/${den}`:''}.`;
-  }
-  out.innerHTML = cls;
-}
-
-// ---------- STEP-BY-STEP SIMPLIFIER ----------
-let spNum = 12, spDen = 18;
-
-function updateSimplifyView(){
-  document.getElementById('sp-readout').textContent = spNum + '/' + spDen;
-  const bar = document.getElementById('sp-bar');
-  const capped = Math.min(spDen, 24);
-  const filledCapped = Math.round((spNum/spDen) * capped);
-  let html = '';
-  for(let i=0;i<capped;i++){ html += `<div class="seg${i<filledCapped?' on':''}"></div>`; }
-  bar.innerHTML = html;
-
-  const btnWrap = document.getElementById('sp-divisor-btns');
-  let btns = '';
-  for(let d=2; d<=12; d++){
-    if(spNum % d === 0 && spDen % d === 0){
-      btns += `<button class="action" onclick="applyDivide(${d})">÷ ${d}</button>`;
-    }
-  }
-  btnWrap.innerHTML = btns;
-
-  const fb = document.getElementById('sp-feedback');
-  if(gcd(spNum, spDen) === 1){
-    fb.className = 'feedback correct';
-    fb.textContent = `🎉 Irredutível! ${spNum}/${spDen} não dá para simplificar mais.`;
-  } else {
-    fb.className = 'feedback';
-    fb.style.display = 'none';
-  }
-}
-
-function applyDivide(d){
-  spNum = spNum / d;
-  spDen = spDen / d;
-  updateSimplifyView();
-}
-
-function loadSimplify(n, d){ spNum = n; spDen = d; updateSimplifyView(); }
-
-function startSimplify(){
-  const n = parseInt(document.getElementById('sp-num').value);
-  const d = parseInt(document.getElementById('sp-den').value);
-  if(!d || d<1 || isNaN(n) || n<0){ return; }
-  loadSimplify(n, d);
-}
-
-// ---------- DIVISION: GUARDA, TROCA, INVERTE ----------
-function startDivision(){
-  const a = parseInt(document.getElementById('dv-a').value);
-  const b = parseInt(document.getElementById('dv-b').value);
-  const c = parseInt(document.getElementById('dv-c').value);
-  const d = parseInt(document.getElementById('dv-d').value);
-  const wrap = document.getElementById('dv-steps');
-  if(!b || !c || !d){ wrap.innerHTML = '<div class="dv-step show">Nenhum denominador pode ser zero.</div>'; return; }
-  const resNum = a*d, resDen = b*c;
-  const g = gcd(resNum, resDen);
-  const simpNum = resNum/g, simpDen = resDen/g;
-  const simplifiedNote = (simpNum!==resNum) ? ` = ${simpNum}/${simpDen} (já simplificada)` : '';
-  wrap.innerHTML = `
-    <div class="dv-step" id="dvs1"><span class="tag">Passo 1 — Guarda</span>${a}/${b} continua exatamente igual.</div>
-    <div class="dv-step" id="dvs2"><span class="tag">Passo 2 — Troca</span>O sinal de ÷ vira ×.</div>
-    <div class="dv-step" id="dvs3"><span class="tag">Passo 3 — Inverte</span>${c}/${d} vira ${d}/${c} (o de cabeça pra baixo).</div>
-    <div class="dv-step" id="dvs4"><span class="tag">Resultado</span>${a}/${b} × ${d}/${c} = (${a}×${d}) / (${b}×${c}) = ${resNum}/${resDen}${simplifiedNote}</div>`;
-  ['dvs1','dvs2','dvs3','dvs4'].forEach((id, i)=>{
-    setTimeout(()=>{ const el = document.getElementById(id); if(el) el.classList.add('show'); }, i*450);
-  });
-}
-function updateGrid(val){
-  const pct = parseInt(val, 10);
-  document.getElementById('pg-grid').innerHTML = gridCellsHTML(pct);
-  document.getElementById('pg-readout').textContent = pct + '%';
-  document.getElementById('pg-caption').textContent = pct + ' de 100 quadrados';
-  const g = gcd(pct, 100);
-  document.getElementById('pg-fraction').textContent =
-    pct===0 ? '= 0/100' : `= ${pct}/100 = ${pct/g}/${100/g} (fração irredutível)`;
-}
-
-// ---------- CINEMA SEATS VISUAL ----------
-const TOTAL_SEATS = 250;
-let seatState = new Array(TOTAL_SEATS).fill(false);
-
-function renderSeats(){
-  const grid = document.getElementById('seats-grid');
-  let html = '';
-  for(let i=0;i<TOTAL_SEATS;i++){
-    html += `<button class="seat${seatState[i]?' occ':''}" aria-label="Poltrona ${i+1}" onclick="toggleSeat(${i})"></button>`;
-  }
-  grid.innerHTML = html;
-  updateSeatStats();
-}
-
-function toggleSeat(i){
-  seatState[i] = !seatState[i];
-  const btn = document.getElementById('seats-grid').children[i];
-  btn.classList.toggle('occ', seatState[i]);
-  updateSeatStats();
-}
-
-function updateSeatStats(){
-  const count = seatState.filter(Boolean).length;
-  const pct = (count/TOTAL_SEATS*100);
-  document.getElementById('seats-count').textContent = count;
-  document.getElementById('seats-pct').textContent = pct.toFixed(1).replace(/\.0$/,'') + '%';
-  const g = gcd(count, TOTAL_SEATS);
-  document.getElementById('seats-frac').textContent =
-    count===0 ? '' : `(${count}/250 = ${count/g}/${TOTAL_SEATS/g})`;
-}
-
-function fillExampleSeats(){
-  seatState = seatState.map((_, i)=> i<140);
-  renderSeats();
-}
-function clearSeats(){
-  seatState = new Array(TOTAL_SEATS).fill(false);
-  renderSeats();
-}
-
-function calcPercentOf(){
-  const p = parseFloat(document.getElementById('pct-a').value);
-  const v = parseFloat(document.getElementById('pct-b').value);
-  const r = (p/100)*v;
-  showResult('pct-result', `<div class="big">${r}</div>${p}% de ${v} = (${p}/100) × ${v} = ${r}`);
-}
-
-// ---------- DESCONTO / ACRÉSCIMO ----------
-function renderPriceBar(preco, valorPct, final, tipo){
-  const bar = document.getElementById('dc-bar');
-  if(tipo==='desconto'){
-    const keepShare = Math.max(0, Math.min(100, (final/preco*100)));
-    const removeShare = 100-keepShare;
-    bar.innerHTML = `<div class="seg keep" style="flex-basis:${keepShare}%">R$ ${final.toFixed(2)}</div><div class="seg change" style="flex-basis:${removeShare}%">−R$ ${valorPct.toFixed(2)}</div>`;
-  } else {
-    const baseShare = Math.max(0, Math.min(100, (preco/final*100)));
-    const addShare = 100-baseShare;
-    bar.innerHTML = `<div class="seg keep" style="flex-basis:${baseShare}%">R$ ${preco.toFixed(2)}</div><div class="seg change" style="flex-basis:${addShare}%">+R$ ${valorPct.toFixed(2)}</div>`;
-  }
-}
-
-function calcDesconto(){
-  const preco = parseFloat(document.getElementById('dc-preco').value);
-  const pct = parseFloat(document.getElementById('dc-pct').value);
-  const tipo = document.getElementById('dc-tipo').value;
-  const valorPct = preco*pct/100;
-  const final = tipo==='desconto' ? preco-valorPct : preco+valorPct;
-  const sinal = tipo==='desconto' ? '−' : '+';
-  showResult('dc-result',
-    `<div class="big">R$ ${final.toFixed(2)}</div>${pct}% de R$ ${preco.toFixed(2)} = R$ ${valorPct.toFixed(2)}  •  R$ ${preco.toFixed(2)} ${sinal} R$ ${valorPct.toFixed(2)} = R$ ${final.toFixed(2)}`);
-  renderPriceBar(preco, valorPct, final, tipo);
-}
-
-// ---------- RAZÃO E PROPORÇÃO ----------
-function renderRatioBars(a,b,c,x){
-  const wrap = document.getElementById('rz-bars');
-  const bRound = Math.round(b), xRound = Math.round(x);
-  if(bRound<1 || xRound<1 || bRound>30 || xRound>30){
-    wrap.innerHTML = `<div class="ratio-bar-label">(visual disponível para denominadores entre 1 e 30)</div>`;
-    return;
-  }
-  const aHi = Math.min(Math.round(a), bRound);
-  const cHi = Math.min(Math.round(c), xRound);
-  let barA = '<div class="ratio-bar">';
-  for(let i=0;i<bRound;i++){ barA += `<div class="seg${i<aHi?' on':''}"></div>`; }
-  barA += '</div>';
-  let barB = '<div class="ratio-bar">';
-  for(let i=0;i<xRound;i++){ barB += `<div class="seg${i<cHi?' on':''}"></div>`; }
-  barB += '</div>';
-  wrap.innerHTML =
-    `<div><div class="ratio-bar-label">${a}/${b}  (${aHi} de ${bRound} partes)</div>${barA}</div>` +
-    `<div><div class="ratio-bar-label">${c}/x  (${cHi} de ${xRound} partes)</div>${barB}</div>`;
-}
-
-function solveProportion(){
-  const a = parseFloat(document.getElementById('rz-a').value);
-  const b = parseFloat(document.getElementById('rz-b').value);
-  const c = parseFloat(document.getElementById('rz-c').value);
-  if(!a){ showResult('rz-result','O valor de "a" não pode ser zero.'); return; }
-  const x = (b*c)/a;
-  showResult('rz-result', `<div class="big">x = ${x}</div>${a}/${b} = ${c}/x  →  ${a} × x = ${b} × ${c}  →  x = ${b*c}/${a} = ${x}`);
-  renderRatioBars(a,b,c,x);
-}
-
-// ---------- GRANDEZAS ----------
-function calcVelocidade(){
-  const d = parseFloat(document.getElementById('v-d').value);
-  const t = parseFloat(document.getElementById('v-t').value);
-  const v = d/t;
-  showResult('v-result', `<div class="big">${v} km/h</div>${d} km ÷ ${t} h = ${v} km/h`);
-  const car = document.getElementById('v-car');
-  car.style.transition = 'none';
-  car.style.left = '4px';
-  void car.offsetWidth; // force reflow
-  car.style.transition = '';
-  requestAnimationFrame(()=>{ car.style.left = 'calc(100% - 30px)'; });
-  document.getElementById('v-caption').textContent = `Percorrendo ${d} km em ${t} h → ${v} km/h`;
-}
-function calcDensidade(){
-  const p = parseFloat(document.getElementById('dd-p').value);
-  const a = parseFloat(document.getElementById('dd-a').value);
-  const d = (p/a).toFixed(2);
-  showResult('dd-result', `<div class="big">${d} hab/km²</div>${p} ÷ ${a} km² = ${d} hab/km²`);
-  const posPct = Math.max(0, Math.min(100, (d/2000)*100));
-  document.getElementById('dd-pointer').style.left = posPct+'%';
-}
-function calcVazao(){
-  const v = parseFloat(document.getElementById('vz-v').value);
-  const t = parseFloat(document.getElementById('vz-t').value);
-  const vz = (v/t).toFixed(2);
-  showResult('vz-result', `<div class="big">${vz} L/min</div>${v} L ÷ ${t} min = ${vz} L/min`);
-  const water = document.getElementById('vz-water');
-  water.style.transition = 'none';
-  water.style.height = '0%';
-  void water.offsetWidth;
-  water.style.transition = '';
-  requestAnimationFrame(()=>{ water.style.height = '90%'; });
-  document.getElementById('vz-caption').textContent = `${v} L em ${t} min → ${vz} L/min`;
-}
-function calcEscala(){
-  const m = parseFloat(document.getElementById('es-m').value);
-  const r = parseFloat(document.getElementById('es-r').value);
-  const rCm = r*100000; // km to cm
-  const g = gcd(m, rCm);
-  showResult('es-result', `<div class="big">1 : ${(rCm/m).toLocaleString('pt-BR')}</div>${m} cm no mapa representam ${r} km reais (${rCm.toLocaleString('pt-BR')} cm) → escala 1 : ${(rCm/m).toLocaleString('pt-BR')}`);
-}
-
-// ---------- LISTA: OPERAÇÕES COM FRAÇÕES ----------
-function calcFracOp(){
-  const n1 = parseFloat(document.getElementById('fo-n1').value);
-  const d1 = parseFloat(document.getElementById('fo-d1').value);
-  const op = document.getElementById('fo-op').value;
-  const n2 = parseFloat(document.getElementById('fo-n2').value);
-  const d2 = parseFloat(document.getElementById('fo-d2').value);
-  if(!d1 || !d2){ showResult('fo-result', 'O denominador não pode ser zero.'); return; }
-  let resN, resD, steps;
-  if(op==='vezes'){
-    resN = n1*n2; resD = d1*d2;
-    steps = `${n1}/${d1} × ${n2}/${d2} = (${n1}×${n2})/(${d1}×${d2}) = ${resN}/${resD}`;
-  } else if(op==='dividido'){
-    resN = n1*d2; resD = d1*n2;
-    steps = `${n1}/${d1} ÷ ${n2}/${d2}  →  guarda, troca, inverte  →  ${n1}/${d1} × ${d2}/${n2} = ${resN}/${resD}`;
-  } else if(op==='mais'){
-    resN = n1*d2 + n2*d1; resD = d1*d2;
-    steps = `${n1}/${d1} + ${n2}/${d2} = (${n1}×${d2} + ${n2}×${d1}) / (${d1}×${d2}) = (${n1*d2} + ${n2*d1}) / ${resD} = ${resN}/${resD}`;
-  } else {
-    resN = n1*d2 - n2*d1; resD = d1*d2;
-    steps = `${n1}/${d1} − ${n2}/${d2} = (${n1}×${d2} − ${n2}×${d1}) / (${d1}×${d2}) = (${n1*d2} − ${n2*d1}) / ${resD} = ${resN}/${resD}`;
-  }
-  const g = gcd(resN, resD);
-  const simpN = resN/g, simpD = resD/g;
-  const simplifiedNote = (Math.abs(simpN)!==Math.abs(resN)) ? `  →  simplificando por ${Math.abs(g)}: ${simpN}/${simpD}` : '  (já é irredutível)';
-  showResult('fo-result', `<div class="big">${simpN}/${simpD}</div>${steps}${simplifiedNote}`);
-}
-
-// ---------- LISTA: FRAÇÃO/PORCENTAGEM DE UM TOTAL ----------
-function toggleFtType(){
-  const type = document.getElementById('ft-type').value;
-  document.getElementById('ft-frac-row').style.display = type==='fracao' ? 'flex' : 'none';
-  document.getElementById('ft-pct-row').style.display = type==='porcentagem' ? 'flex' : 'none';
-}
-
-function calcFracaoTotal(){
-  const total = parseFloat(document.getElementById('ft-total').value);
-  const type = document.getElementById('ft-type').value;
-  let usedFrac, usedLabel;
-  if(type==='fracao'){
-    const n = parseFloat(document.getElementById('ft-num').value);
-    const d = parseFloat(document.getElementById('ft-den').value);
-    usedFrac = n/d;
-    usedLabel = `${n}/${d} de ${total} = (${n}/${d}) × ${total}`;
-  } else {
-    const pct = parseFloat(document.getElementById('ft-pct').value);
-    usedFrac = pct/100;
-    usedLabel = `${pct}% de ${total} = (${pct}/100) × ${total}`;
-  }
-  const used = usedFrac*total;
-  const rest = total-used;
-  showResult('ft-result', `<div class="big">${used}</div>${usedLabel} = ${used}  •  restam ${total} − ${used} = ${rest}`);
-  const usedShare = Math.max(0, Math.min(100, usedFrac*100));
-  const restShare = 100-usedShare;
-  document.getElementById('ft-bar').innerHTML =
-    `<div class="seg change" style="flex-basis:${usedShare}%">${used}</div><div class="seg keep" style="flex-basis:${restShare}%">${rest}</div>`;
-}
-
-// ---------- LISTA: RAZÃO ENTRE DUAS QUANTIDADES ----------
-function calcRazaoSimples(){
-  const a = parseFloat(document.getElementById('rt-a').value);
-  const b = parseFloat(document.getElementById('rt-b').value);
-  if(!b){ showResult('rt-result', 'O segundo valor não pode ser zero.'); return; }
-  const g = gcd(Math.round(a), Math.round(b));
-  const sa = a/g, sb = b/g;
-  const dec = (a/b).toFixed(3);
-  showResult('rt-result', `<div class="big">${sa}/${sb}</div>${a}/${b} = ${sa}/${sb} (dividindo os dois por ${g})  •  em decimal ≈ ${dec}  •  ou seja, para cada ${sb}, há ${sa}.`);
-}
-
-// ---------- LISTA: GRANDEZA UNIFICADA (velocidade/vazão/densidade/escala) ----------
-const grandezaLabels = {
-  velocidade: { a:'Distância (km)', b:'Tempo (h)', c:'Velocidade (km/h)', formula:'Velocidade = distância ÷ tempo' },
-  vazao:      { a:'Volume (L)', b:'Tempo (min)', c:'Vazão (L/min)', formula:'Vazão = volume ÷ tempo' },
-  densidade:  { a:'População (hab)', b:'Área (km²)', c:'Densidade (hab/km²)', formula:'Densidade = população ÷ área' },
-  escala:     { a:'Distância no mapa (cm)', b:'Distância real (km)', c:'Escala (1 : ___)', formula:'Escala = distância no mapa ÷ distância real' },
-};
-
-function setupGrandezaUnificada(){
-  const type = document.getElementById('gu-type').value;
-  const L = grandezaLabels[type];
-  document.getElementById('gu-label-a').textContent = L.a;
-  document.getElementById('gu-label-b').textContent = L.b;
-  document.getElementById('gu-label-c').textContent = L.c;
-  document.getElementById('gu-a').value = '';
-  document.getElementById('gu-b').value = '';
-  document.getElementById('gu-c').value = '';
-  document.getElementById('gu-result').classList.remove('show');
-}
-
-function resolverGrandeza(){
-  const type = document.getElementById('gu-type').value;
-  const L = grandezaLabels[type];
-  const aRaw = document.getElementById('gu-a').value;
-  const bRaw = document.getElementById('gu-b').value;
-  const cRaw = document.getElementById('gu-c').value;
-  const a = aRaw===''? null : parseFloat(aRaw);
-  const b = bRaw===''? null : parseFloat(bRaw);
-  const c = cRaw===''? null : parseFloat(cRaw);
-  const missing = [a,b,c].filter(v=>v===null).length;
-  if(missing!==1){ showResult('gu-result', 'Preencha exatamente dois valores e deixe o terceiro em branco — ele é o que vamos descobrir!'); return; }
-
-  if(type==='escala'){
-    // a = mapa (cm), b = real (km), c = escala (1:c)
-    if(c===null){
-      const realCm = b*100000;
-      const result = realCm/a;
-      showResult('gu-result', `<div class="big">1 : ${result.toLocaleString('pt-BR')}</div>Convertendo ${b} km para cm: ${realCm.toLocaleString('pt-BR')} cm. Escala = ${realCm.toLocaleString('pt-BR')} ÷ ${a} = 1 : ${result.toLocaleString('pt-BR')}`);
-    } else if(a===null){
-      const realCm = b*100000;
-      const result = realCm/c;
-      showResult('gu-result', `<div class="big">${result} cm</div>Distância real em cm: ${b} km = ${realCm.toLocaleString('pt-BR')} cm. Distância no mapa = ${realCm.toLocaleString('pt-BR')} ÷ ${c} = ${result} cm`);
-    } else {
-      const realCm = a*c;
-      const result = realCm/100000;
-      showResult('gu-result', `<div class="big">${result} km</div>Distância real em cm = ${a} × ${c} = ${realCm.toLocaleString('pt-BR')} cm = ${result} km`);
-    }
-    return;
-  }
-
-  let result, steps;
-  if(c===null){
-    result = a/b;
-    steps = `${L.formula} = ${a} ÷ ${b} = ${result}`;
-  } else if(a===null){
-    result = b*c;
-    steps = `${L.a.split('(')[0].trim()} = ${L.c.split('(')[0].trim()} × ${L.b.split('(')[0].trim()} = ${c} × ${b} = ${result}`;
-  } else {
-    result = a/c;
-    steps = `${L.b.split('(')[0].trim()} = ${L.a.split('(')[0].trim()} ÷ ${L.c.split('(')[0].trim()} = ${a} ÷ ${c} = ${result}`;
-  }
-  showResult('gu-result', `<div class="big">${result}</div>${steps}`);
-}
-
-// ---------- LISTA: PORCENTAGEM — TRÊS MODOS ----------
-function setupPercentMode(){
-  const mode = document.getElementById('pm-mode').value;
-  const wrap = document.getElementById('pm-fields');
-  if(mode==='valor'){
-    wrap.innerHTML = `<div><label>Porcentagem (%)</label><input type="number" id="pm-pct" value="35"></div>
-      <div><label>Valor total</label><input type="number" id="pm-total" value="75"></div>`;
-  } else if(mode==='percentual'){
-    wrap.innerHTML = `<div><label>Parte</label><input type="number" id="pm-parte" value="18"></div>
-      <div><label>Total</label><input type="number" id="pm-total2" value="60"></div>`;
-  } else {
-    wrap.innerHTML = `<div><label>Valor antes</label><input type="number" id="pm-antes" value="20"></div>
-      <div><label>Valor depois</label><input type="number" id="pm-depois" value="27"></div>`;
-  }
-  document.getElementById('pm-result').classList.remove('show');
-}
-
-function calcPercentMode(){
-  const mode = document.getElementById('pm-mode').value;
-  if(mode==='valor'){
-    const pct = parseFloat(document.getElementById('pm-pct').value);
-    const total = parseFloat(document.getElementById('pm-total').value);
-    const r = (pct/100)*total;
-    showResult('pm-result', `<div class="big">${r}</div>${pct}% de ${total} = (${pct}/100) × ${total} = ${r}`);
-  } else if(mode==='percentual'){
-    const parte = parseFloat(document.getElementById('pm-parte').value);
-    const total = parseFloat(document.getElementById('pm-total2').value);
-    const r = (parte/total*100);
-    const rTxt = r.toFixed(2).replace(/\.00$/,'');
-    showResult('pm-result', `<div class="big">${rTxt}%</div>${parte} é a fração ${parte}/${total} do total. (${parte}/${total}) × 100 = ${rTxt}%`);
-  } else {
-    const antes = parseFloat(document.getElementById('pm-antes').value);
-    const depois = parseFloat(document.getElementById('pm-depois').value);
-    const diff = depois-antes;
-    const r = (diff/antes*100);
-    const rTxt = Math.abs(r).toFixed(2).replace(/\.00$/,'');
-    const tipo = diff>=0 ? 'aumento' : 'desconto';
-    showResult('pm-result', `<div class="big">${rTxt}% de ${tipo}</div>Diferença: ${depois} − ${antes} = ${diff}. Variação percentual = (${diff}/${antes}) × 100 = ${r.toFixed(2).replace(/\.00$/,'')}%`);
-  }
-}
-
-// ---------- LISTA: CONVERSOR PORCENTAGEM ↔ FRAÇÃO ↔ DECIMAL ----------
-function setupConverter(){
-  const type = document.getElementById('cv-type').value;
-  const wrap = document.getElementById('cv-fields');
-  if(type==='fracao'){
-    wrap.innerHTML = `<div><label>Numerador</label><input type="number" id="cv-num" value="23"></div>
-      <div style="flex:0; padding-bottom:8px; font-weight:700;">/</div>
-      <div><label>Denominador</label><input type="number" id="cv-den" value="100"></div>`;
-  } else if(type==='porcentagem'){
-    wrap.innerHTML = `<div><label>Porcentagem (%)</label><input type="number" id="cv-pct" value="55"></div>`;
-  } else {
-    wrap.innerHTML = `<div><label>Número decimal</label><input type="number" step="0.01" id="cv-dec" value="0.46"></div>`;
-  }
-  document.getElementById('cv-result').classList.remove('show');
-}
-
-function calcConverter(){
-  const type = document.getElementById('cv-type').value;
-  let dec;
-  if(type==='fracao'){
-    const n = parseFloat(document.getElementById('cv-num').value);
-    const d = parseFloat(document.getElementById('cv-den').value);
-    dec = n/d;
-  } else if(type==='porcentagem'){
-    dec = parseFloat(document.getElementById('cv-pct').value)/100;
-  } else {
-    dec = parseFloat(document.getElementById('cv-dec').value);
-  }
-  const pctVal = dec*100;
-  let numer = dec, denom = 1, guard = 0;
-  while(Math.abs(numer - Math.round(numer)) > 1e-9 && guard < 6){ numer *= 10; denom *= 10; guard++; }
-  numer = Math.round(numer);
-  const g = gcd(numer, denom);
-  const fracN = numer/g, fracD = denom/g;
-  showResult('cv-result',
-    `<div class="visual-wrap" style="align-items:center;">
-       <div class="grid100 mini">${gridCellsHTML(pctVal)}</div>
-       <div><div class="big">${pctVal.toFixed(2).replace(/\.00$/,'')}%</div>Fração irredutível: ${fracN}/${fracD}  •  Decimal: ${dec}</div>
-     </div>`);
-}
-
-
-const quizData = [
-  { q:"Uma calça de R$ 160,00 tem 25% de desconto à vista. Qual o preço final?",
-    opts:["R$ 120,00","R$ 130,00","R$ 140,00","R$ 40,00"], correct:0,
-    explain:"25% de 160 = 40 (esse é só o desconto!). O preço final é 160 − 40 = R$ 120,00." },
-  { q:"35% escrito como fração irredutível é:",
-    opts:["35/100","7/20","3/5","1/3"], correct:1,
-    explain:"35% = 35/100. Dividindo os dois números por 5: 35÷5 = 7 e 100÷5 = 20, ficando 7/20." },
-  { q:"Um carro faz 300 km em 5 horas. Qual a velocidade média?",
-    opts:["50 km/h","60 km/h","1500 km/h","6 km/h"], correct:1,
-    explain:"Velocidade = distância ÷ tempo = 300 ÷ 5 = 60 km/h (não multiplique, divida!)." },
-  { q:"Se 2 xícaras de farinha rendem 3 bolos, quantas xícaras para 12 bolos?",
-    opts:["6","8","9","18"], correct:1,
-    explain:"12 bolos é 4 vezes mais que 3 bolos (3×4=12). Como a razão se mantém, as xícaras também multiplicam por 4: 2×4 = 8." },
-  { q:"Uma cidade com 40.000 habitantes numa área de 200 km² tem densidade de:",
-    opts:["200 hab/km²","20 hab/km²","2 hab/km²","800 hab/km²"], correct:0,
-    explain:"Densidade = população ÷ área = 40.000 ÷ 200 = 200 hab/km²." },
-  { q:"Uma TV de R$ 1.900,00 é comprada a prazo com 9% de acréscimo. Qual o valor final?",
-    opts:["R$ 1.729,00","R$ 2.071,00","R$ 1.991,00","R$ 2.090,00"], correct:1,
-    explain:"9% de 1900 = 171. Como é acréscimo (a prazo), somamos: 1900 + 171 = R$ 2.071,00." },
-];
-let quizAnswered = 0, quizScore = 0;
-
-function renderQuiz(){
-  const container = document.getElementById('quiz-container');
-  container.innerHTML='';
-  quizAnswered = 0; quizScore = 0;
-  document.getElementById('quiz-score-box').classList.remove('show');
-  quizData.forEach((item, qi)=>{
-    const div = document.createElement('div');
-    div.className='quiz-q';
-    div.innerHTML = `<div class="q-text">${qi+1}. ${item.q}</div><div class="quiz-opts" id="qopts-${qi}"></div><div class="feedback wrong" id="qexplain-${qi}" style="display:none;"></div>`;
-    container.appendChild(div);
-    const optsWrap = div.querySelector(`#qopts-${qi}`);
-    item.opts.forEach((opt, oi)=>{
-      const b = document.createElement('button');
-      b.className='opt'; b.textContent = opt;
-      b.onclick = ()=> answerQuiz(qi, oi, b, optsWrap);
-      optsWrap.appendChild(b);
-    });
-  });
-}
-
-function answerQuiz(qi, oi, btn, wrap){
-  if(wrap.dataset.locked) return;
-  wrap.dataset.locked = "1";
-  const correct = quizData[qi].correct;
-  Array.from(wrap.children).forEach((b, idx)=>{
-    b.disabled = true;
-    if(idx===correct) b.classList.add('reveal-correct');
-  });
-  if(oi===correct){ btn.classList.add('picked-correct'); quizScore++; }
-  else {
-    btn.classList.add('picked-wrong');
-    const exp = document.getElementById(`qexplain-${qi}`);
-    exp.innerHTML = `💡 ${quizData[qi].explain}`;
-    exp.style.display = 'block';
-  }
-  quizAnswered++;
-  if(quizAnswered===quizData.length){
-    document.getElementById('quiz-score').textContent = quizScore+'/'+quizData.length;
-    document.getElementById('quiz-score-box').classList.add('show');
-  }
-}
-
-function restartQuiz(){ renderQuiz(); }
-renderQuiz();
-updateGrid(35);
-renderSeats();
-calcDesconto();
-solveProportion();
-renderTypePizza();
-loadSimplify(12,18);
-setupGrandezaUnificada();
-setupPercentMode();
-setupConverter();
-</script>
-</body>
-</html>
+        <div><label>Porcentagem
