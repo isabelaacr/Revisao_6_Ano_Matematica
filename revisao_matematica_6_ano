@@ -48,6 +48,7 @@
     background-position: 0 190px;
   }
   .notebook::before{
+    /* red margin line */
     content:"";
     position:absolute;
     top:0; bottom:0; left:52px;
@@ -68,6 +69,7 @@
     background: radial-gradient(circle at 35% 30%, #fff, var(--ring-metal) 55%, #8b95a8 100%);
     box-shadow: 0 2px 4px rgba(0,0,0,0.25), inset 0 0 0 6px var(--paper);
   }
+
   header.hero{
     padding-bottom:18px;
     border-bottom:2px dashed #C7B8A0;
@@ -96,6 +98,8 @@
   .subtitle{
     font-size:16px; color:var(--ink-soft); max-width:640px; line-height:1.5;
   }
+
+  /* Tabs styled as sticky index tabs */
   .tabs{
     display:flex; flex-wrap:wrap; gap:10px; margin:22px 0 26px;
   }
@@ -121,14 +125,17 @@
   .tab[data-tab="razao"]{ background:var(--blue); }
   .tab[data-tab="grandezas"]{ background:var(--purple); }
   .tab[data-tab="quiz"]{ background:var(--green); }
+
   section.panel{ display:none; animation:fadeIn .35s ease; }
   section.panel.active{ display:block; }
   @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
   h2.section-title{
     font-family:'Fredoka', sans-serif; font-size:24px; font-weight:600;
     margin:4px 0 4px; display:flex; align-items:center; gap:10px;
   }
   .lead{ color:var(--ink-soft); margin:0 0 20px; line-height:1.55; max-width:680px;}
+
   .card{
     background:#fff;
     border:1.5px solid #E7DFCF;
@@ -144,8 +151,10 @@
     display:inline-block; font-weight:700; font-size:14.5px;
     color:var(--ink);
   }
+
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   @media (max-width:680px){ .grid2{ grid-template-columns:1fr; } }
+
   label{ font-size:13.5px; font-weight:700; color:var(--ink-soft); display:block; margin-bottom:4px;}
   input[type=number], input[type=text], select{
     width:100%; padding:9px 10px; border-radius:8px; border:1.5px solid #D9D2C0;
@@ -155,6 +164,7 @@
   input:focus, select:focus{ outline:2px solid var(--coral); outline-offset:1px; }
   .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; margin-bottom:12px;}
   .row > div{ flex:1; min-width:120px;}
+
   button.action{
     font-family:'Fredoka', sans-serif; font-weight:600; font-size:14.5px;
     background:var(--ink); color:#fff; border:none; border-radius:8px;
@@ -164,6 +174,7 @@
   button.action:hover{ transform:translateY(-1px); }
   button.action:active{ transform:translateY(1px); box-shadow:0 1px 0 #0f1526; }
   button.action.coral{ background:var(--coral); box-shadow:0 3px 0 var(--coral-dark); }
+
   .result{
     margin-top:12px; padding:12px 14px; border-radius:8px;
     background:var(--green-bg); border:1.5px solid #BFE3CE;
@@ -172,6 +183,8 @@
   }
   .result.show{ display:block; }
   .result .big{ font-family:'Fredoka',sans-serif; font-size:20px; font-weight:600; color:var(--green); }
+
+  /* Practice questions */
   .question{
     border-top:1px dashed #DDD3BC; padding-top:14px; margin-top:14px;
   }
@@ -184,10 +197,14 @@
   }
   .feedback.correct{ background:var(--green-bg); color:var(--green); display:block; }
   .feedback.wrong{ background:var(--wrong-bg); color:var(--wrong); display:block; }
+
+  /* Sticky note answer key toggle */
   details.key{
     margin-top:10px; font-size:13.5px; color:var(--ink-soft);
   }
   details.key summary{ cursor:pointer; font-weight:700; color:var(--coral-dark);}
+
+  /* Quiz */
   .quiz-q{ margin-bottom:22px; }
   .quiz-opts{ display:grid; gap:8px; margin-top:10px; }
   .opt{
@@ -200,12 +217,15 @@
   .opt.picked-wrong{ background:var(--wrong-bg); border-color:var(--wrong); color:var(--wrong); }
   .opt.reveal-correct{ background:var(--green-bg); border-color:var(--green); }
   .opt[disabled]{ cursor:default; }
+
   #quiz-score-box{
     text-align:center; padding:26px; border-radius:12px; background:var(--ink); color:#fff;
     display:none;
   }
   #quiz-score-box .num{ font-family:'Fredoka',sans-serif; font-size:44px; font-weight:700; color:var(--yellow);}
   #quiz-score-box.show{ display:block; }
+
+  /* Visual percentage grid (100 squares) */
   .visual-wrap{ display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
   .grid100{
     display:grid; grid-template-columns:repeat(10,1fr); gap:3px;
@@ -226,6 +246,8 @@
     font-family:'Fredoka',sans-serif; font-weight:700; font-size:34px; color:var(--coral-dark);
   }
   .pct-sub{ font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--ink-soft); }
+
+  /* Cinema seats visual */
   .seats-toolbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
   .seats-stats{ font-family:'JetBrains Mono',monospace; font-size:14.5px; }
   .seats-stats .pct{ font-family:'Fredoka',sans-serif; font-weight:700; font-size:22px; color:var(--coral-dark); }
@@ -240,6 +262,8 @@
   .seat:hover{ transform:scale(1.15); }
   .seat.occ{ background:var(--coral); }
   @media (max-width:560px){ .seats-grid{ grid-template-columns:repeat(15,1fr);} }
+
+  /* Price split bar (desconto/acréscimo) */
   .price-bar-wrap{ margin-top:16px; }
   .price-bar{ display:flex; height:36px; border-radius:8px; overflow:hidden; box-shadow:inset 0 0 0 1.5px #D9D2C0; }
   .price-bar .seg{
@@ -250,32 +274,56 @@
   .price-bar .seg.keep{ background:var(--green); }
   .price-bar .seg.change{ background:var(--coral); }
   .price-bar-caption{ display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); margin-top:6px; }
+
+  /* Ratio comparison bars */
   .ratio-bars-wrap{ margin-top:16px; display:flex; flex-direction:column; gap:12px; }
   .ratio-bar-label{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--ink-soft); margin-bottom:4px; }
   .ratio-bar{ display:flex; gap:3px; }
   .ratio-bar .seg{ flex:1; height:28px; border-radius:4px; background:#EDE7D6; transition:background .15s; }
   .ratio-bar .seg.on{ background:var(--blue); }
+
+  /* Velocity track */
   .track-wrap{ margin-top:16px; }
   .track{ position:relative; height:38px; background:#EDE7D6; border-radius:20px; overflow:hidden; }
   .track .road-car{ position:absolute; top:4px; left:4px; font-size:24px; transition:left 2.2s cubic-bezier(.4,0,.2,1); }
   .track .flag{ position:absolute; right:10px; top:7px; font-size:18px; }
   .track-caption{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); margin-top:6px; }
+
+  /* Vazão tank */
   .tank-wrap{ margin-top:16px; display:flex; align-items:flex-end; gap:16px; }
   .tank{ width:64px; height:100px; border:2.5px solid var(--ink); border-radius:6px 6px 12px 12px; position:relative; overflow:hidden; background:#F3F0E6; flex-shrink:0; }
   .tank .water{ position:absolute; bottom:0; left:0; right:0; background:linear-gradient(180deg,#8FCBE6,#4A9BC4); height:0%; transition:height 1.8s ease; }
   .tank-caption{ font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--ink-soft); }
+
+  /* Density gauge */
   .gauge-wrap{ margin-top:16px; }
   .gauge{ position:relative; height:14px; border-radius:8px; background:linear-gradient(90deg,#BFE3CE,#FFE29A,#F6B0A6); }
   .gauge .pointer{ position:absolute; top:-9px; width:3px; height:32px; background:var(--ink); border-radius:2px; transition:left .4s ease; }
   .gauge-labels{ display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:5px; }
+
+  /* Escala ruler */
   .ruler-wrap{ margin-top:16px; display:flex; align-items:center; gap:12px; }
   .ruler-seg{ height:18px; border-radius:4px; }
   .ruler-seg.mapa{ width:50px; background:var(--purple); }
   .ruler-seg.real{ width:220px; background:repeating-linear-gradient(90deg, var(--blue) 0 3px, transparent 3px 22px); border-radius:4px; }
   .ruler-caption{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); }
+
+  /* Long division step table */
+  .division-note{ padding:10px 14px; border-radius:8px; background:var(--green-bg); border:1.5px solid #BFE3CE; font-family:'JetBrains Mono',monospace; font-size:14px; margin-top:12px; }
+  .division-table-wrap{ overflow-x:auto; margin-top:12px; }
+  .division-table{ width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:13px; min-width:480px; }
+  .division-table th{ text-align:left; color:var(--ink-soft); font-weight:700; padding:6px 8px; border-bottom:2px solid #D9D2C0; }
+  .division-table td{ padding:6px 8px; border-bottom:1px solid #EDE7D6; }
+  .division-table tr.decimal-row td{ color:var(--coral-dark); }
+  .division-final{ margin-top:12px; padding:12px 16px; border-radius:9px; background:var(--ink); color:#fff; font-family:'JetBrains Mono',monospace; font-size:15px; }
+  .division-final strong{ color:var(--yellow); font-family:'Fredoka',sans-serif; font-size:19px; }
+
+  /* Pizza visuals for fraction types & simplification */
   .pizzas-row{ display:flex; gap:16px; flex-wrap:wrap; margin:14px 0 6px; }
   .pizza{ width:96px; height:96px; border-radius:50%; border:3px solid var(--ink); box-shadow:0 2px 0 rgba(31,42,68,0.08); }
   .pizza-label{ text-align:center; font-family:'JetBrains Mono',monospace; font-size:12.5px; margin-top:6px; color:var(--ink-soft); }
+
+  /* Division steps reveal */
   .dv-steps{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
   .dv-step{
     padding:12px 16px; border-radius:9px; background:#F3F0E6; border:1.5px solid #E7DFCF;
@@ -286,7 +334,31 @@
   .dv-step .tag{ font-family:'Fredoka',sans-serif; font-weight:600; color:var(--coral-dark); display:block; margin-bottom:3px; font-size:13px; }
   .dv-step:last-child{ background:var(--green-bg); border-color:#BFE3CE; }
   .dv-step:last-child .tag{ color:var(--green); }
-  footer.foot{ margin-top:30px; text-align:center; color:var(--ink-soft); font-size:12.5px; }
+
+  .signature-calc{
+    display:flex; gap:22px; flex-wrap:wrap; align-items:flex-start;
+  }
+  .calc-body{
+    background:#2B3350; border-radius:14px; padding:16px; width:230px;
+    box-shadow: var(--shadow);
+  }
+  .calc-screen{
+    background:#B9D6C4; border-radius:6px; padding:10px 12px; font-family:'JetBrains Mono',monospace;
+    font-size:22px; text-align:right; color:#12331f; margin-bottom:10px; min-height:34px; letter-spacing:0.02em;
+  }
+  .calc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
+  .calc-btn{
+    padding:10px 0; border-radius:6px; border:none; font-family:'JetBrains Mono',monospace;
+    font-weight:700; font-size:14px; cursor:pointer; background:#3C4568; color:#fff;
+  }
+  .calc-btn.op{ background:var(--coral); }
+  .calc-btn.eq{ background:var(--green); grid-column:span 2; }
+  .calc-btn.clear{ background:var(--wrong); }
+  .calc-note{ flex:1; min-width:220px; }
+
+  footer.foot{
+    margin-top:30px; text-align:center; color:var(--ink-soft); font-size:12.5px;
+  }
 </style>
 </head>
 <body>
@@ -317,6 +389,7 @@
   <section class="panel active" id="fracoes">
     <h2 class="section-title">📗 Frações e porcentagem</h2>
     <p class="lead">Porcentagem é uma razão que compara uma parte a um total de <strong>100 partes</strong>. Toda fração pode virar porcentagem: basta encontrar uma fração equivalente com denominador 100.</p>
+
     <div class="card">
       <h3>🔲 Veja a porcentagem acontecer</h3>
       <p class="lead" style="margin-bottom:6px;">Porcentagem é sempre "de cada 100". Arraste o controle e observe quantos quadradinhos, de um total de 100, ficam coloridos.</p>
@@ -332,11 +405,13 @@
         </div>
       </div>
     </div>
+
     <div class="card">
       <h3>Exemplo do caderno</h3>
       <p>Em um cinema há 250 poltronas. 140 foram ocupadas. Qual a porcentagem ocupada?</p>
       <span class="formula">140/250 = 14/25 = 56/100 = 56%</span>
     </div>
+
     <div class="card">
       <h3>🎬 Poltronas do cinema — clique para ocupar</h3>
       <p class="lead" style="margin-bottom:10px;">São 250 poltronas (25 fileiras de 10). Clique nas poltronas para marcar como ocupadas e veja a porcentagem mudar em tempo real — igual ao exemplo do livro.</p>
@@ -351,50 +426,11 @@
         &nbsp; <span id="seats-frac"></span>
       </p>
     </div>
+
     <div class="card">
       <h3>🔄 Conversor de fração para porcentagem</h3>
       <p class="lead" style="margin-bottom:12px;">Digite uma fração e veja a porcentagem e a fração irredutível na hora.</p>
       <div class="row">
-        <div><label>Numerador</label><input type="number" id="frac-num" value="140"></div>
-        <div style="max-width:20px; text-align:center; padding-bottom:8px; font-weight:700;">/</div>
-        <div><label>Denominador</label><input type="number" id="frac-den" value="250"></div>
-        <div style="flex:0;"><button class="action" onclick="convertFraction()">Converter</button></div>
-      </div>
-      <div class="result" id="frac-result"></div>
-    </div>
-    <div class="card">
-      <h3>✏️ Pratique — escreva a fração irredutível</h3>
-      <div class="question">
-        <div class="q-text">a) 60% = ?/? (fração irredutível)</div>
-        <div class="answer-row">
-          <input type="text" id="p1" placeholder="ex: 3/5">
-          <button class="action" onclick="checkFractionAnswer('p1','3/5','60% = 60/100. Divida os dois números por 20: 60÷20 = 3 e 100÷20 = 5, ficando 3/5.')">Conferir</button>
-        </div>
-        <div class="feedback" id="p1-fb"></div>
-      </div>
-      <div class="question">
-        <div class="q-text">b) 75% = ?/? (fração irredutível)</div>
-        <div class="answer-row">
-          <input type="text" id="p2" placeholder="ex: 3/4">
-          <button class="action" onclick="checkFractionAnswer('p2','3/4','75% = 75/100. Divida os dois números por 25: 75÷25 = 3 e 100÷25 = 4, ficando 3/4.')">Conferir</button>
-        </div>
-        <div class="feedback" id="p2-fb"></div>
-      </div>
-      <div class="question">
-        <div class="q-text">c) 35% = ?/? (fração irredutível)</div>
-        <div class="answer-row">
-          <input type="text" id="p3" placeholder="ex: 7/20">
-          <button class="action" onclick="checkFractionAnswer('p3','7/20','35% = 35/100. Divida os dois números por 5: 35÷5 = 7 e 100÷5 = 20, ficando 7/20.')">Conferir</button>
-        </div>
-        <div class="feedback" id="p3-fb"></div>
-      </div>
-      <details class="key">
-        <summary>Como simplificar uma fração</summary>
-        <p>Escreva a porcentagem sobre 100 (ex: 60/100) e divida o numerador e o denominador pelo mesmo número várias vezes, até não dar mais para simplificar. 60/100 → ÷20 → 3/5.</p>
-      </details>
-    </div>
-    <div class="card">
-      <h3>🧠 Calcule mentalmente uma porcentagem de um valor</h3>
-      <p class="lead" style="margin-bottom:12px;">Dica: ache 10% (divida por 10) e use esse valor para montar as outras porcentagens.</p>
-      <div class="row">
-        <div><label>Porcentagem
+        <div>
+          <label>Numerador</label>
+          <input type="number" id="frac-num" 
