@@ -119,6 +119,7 @@
   .tab.active{ opacity:1; transform:translateY(-3px); box-shadow:0 5px 0 rgba(0,0,0,0.2), var(--shadow); }
   .tab[data-tab="fracoes"]{ background:var(--coral); }
   .tab[data-tab="tipos"]{ background:#D9673F; }
+  .tab[data-tab="decimais"]{ background:#2F9C95; }
   .tab[data-tab="lista"]{ background:#3D8A8A; }
   .tab[data-tab="desconto"]{ background:var(--yellow); color:#5A4200; box-shadow:0 3px 0 #D6A825, var(--shadow); }
   .tab[data-tab="desconto"].active{ box-shadow:0 5px 0 #D6A825, var(--shadow); }
@@ -359,6 +360,52 @@
   footer.foot{
     margin-top:30px; text-align:center; color:var(--ink-soft); font-size:12.5px;
   }
+
+  /* Place value boxes (casas decimais) */
+  .pv-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:flex-end; margin-top:10px; }
+  .pv-box{ width:58px; text-align:center; }
+  .pv-box.dim{ opacity:0.32; }
+  .pv-digit{
+    font-family:'Fredoka',sans-serif; font-weight:700; font-size:26px;
+    background:#fff; border:2.5px solid var(--ink); border-radius:9px;
+    padding:8px 0; box-shadow:0 2px 0 rgba(31,42,68,0.1);
+  }
+  .pv-box.dim .pv-digit{ border-color:#C9C2AE; box-shadow:none; }
+  .pv-label{ font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-soft); margin-top:5px; line-height:1.25; }
+  .pv-comma{ font-family:'Fredoka',sans-serif; font-weight:700; font-size:30px; padding-bottom:14px; color:var(--coral-dark); }
+  .pv-readout{ margin-top:14px; font-family:'JetBrains Mono',monospace; font-size:14.5px; color:var(--ink-soft); line-height:1.7; }
+  .pv-readout strong{ color:var(--ink); }
+
+  /* Number line for rounding */
+  .nl-wrap{ margin-top:26px; padding:0 16px; }
+  .nl-track{ position:relative; height:8px; background:#EDE7D6; border-radius:6px; margin:0 16px; }
+  .nl-fill{ position:absolute; top:0; left:0; height:8px; border-radius:6px; background:var(--yellow); transition:width .35s ease; }
+  .nl-end{
+    position:absolute; top:-14px; width:30px; height:30px; margin-left:-15px;
+    border-radius:50%; background:#fff; border:3px solid var(--ink-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:10.5px; font-weight:700; color:var(--ink-soft);
+    transition:border-color .3s ease, color .3s ease, background .3s ease;
+  }
+  .nl-end.on{ border-color:var(--green); color:#fff; background:var(--green); }
+  .nl-marker{
+    position:absolute; top:-30px; width:2px; height:22px; background:var(--coral);
+    transition:left .35s ease;
+  }
+  .nl-marker-label{
+    position:absolute; top:-50px; transform:translateX(-50%);
+    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--coral-dark);
+    background:#fff; padding:1px 6px; border-radius:5px; white-space:nowrap;
+    transition:left .35s ease;
+  }
+  .nl-caption{ display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); margin-top:22px; }
+  .round-rule-grid{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .round-rule-chip{
+    font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700;
+    padding:5px 10px; border-radius:6px;
+  }
+  .round-rule-chip.down{ background:var(--green-bg); color:var(--green); }
+  .round-rule-chip.up{ background:#FBEAEA; color:var(--coral-dark); }
 </style>
 </head>
 <body>
@@ -378,6 +425,7 @@
   <nav class="tabs">
     <button class="tab active" data-tab="fracoes">📗 Frações & Porcentagem</button>
     <button class="tab" data-tab="tipos">🍕 Tipos, Simplificar & Dividir</button>
+    <button class="tab" data-tab="decimais">🔢 Decimais & Arredondamento</button>
     <button class="tab" data-tab="lista">📝 Resolva sua Lista</button>
     <button class="tab" data-tab="desconto">🧮 Desconto & Acréscimo</button>
     <button class="tab" data-tab="razao">⚖️ Razão & Proporção</button>
@@ -549,6 +597,110 @@
         <summary>Por que isso funciona?</summary>
         <p>Dividir por uma fração é o mesmo que multiplicar pelo seu "de cabeça pra baixo" (o inverso). Por isso: <strong>guardamos</strong> a primeira fração, <strong>trocamos</strong> o ÷ por ×, e <strong>invertemos</strong> a segunda fração.</p>
       </details>
+    </div>
+  </section>
+
+  <!-- DECIMAIS E ARREDONDAMENTO -->
+  <section class="panel" id="decimais">
+    <h2 class="section-title">🔢 Números decimais e arredondamento</h2>
+    <p class="lead">Um número decimal é só uma fração escondida: a vírgula separa a parte inteira da parte que é "menor que um inteiro". Cada casa depois da vírgula vale <strong>10 vezes menos</strong> que a anterior.</p>
+
+    <div class="card">
+      <h3>🔡 Cada casa vale uma coisa diferente</h3>
+      <p class="lead" style="margin-bottom:6px;">Digite um número decimal (use vírgula ou ponto) e veja cada algarismo "encaixado" na casa que ele ocupa.</p>
+      <div class="row">
+        <div style="max-width:220px;"><label>Número</label><input type="text" id="pv-input" value="345,208" oninput="renderPlaceValue()"></div>
+      </div>
+      <div class="pv-row" id="pv-boxes"></div>
+      <div class="pv-readout" id="pv-readout"></div>
+      <details class="key">
+        <summary>Por que a vírgula é importante?</summary>
+        <p>À esquerda da vírgula ficam as partes <strong>inteiras</strong> (unidade, dezena, centena...), que crescem ×10 a cada casa. À direita ficam as partes <strong>decimais</strong> (décimo, centésimo, milésimo...), que diminuem ÷10 a cada casa. Por isso 3,4 e 3,40 valem exatamente o mesmo: o zero extra não muda o valor.</p>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>⚖️ Comparando decimais</h3>
+      <p class="lead" style="margin-bottom:10px;">Erro comum: achar que 0,39 é maior que 0,4 porque "39 é maior que 4". Errado! Primeiro iguale as casas completando com zero: 0,40 e 0,39 — agora compare casa por casa, da esquerda para a direita. Como os décimos empatam (4 = 4)? Não empatam: 4 é maior que 3, então <strong>0,4 é maior</strong>.</p>
+      <span class="formula">0,4 = 0,40 &nbsp;&gt;&nbsp; 0,39</span>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Arredondamento: a regra do "algarismo seguinte"</h3>
+      <p class="lead" style="margin-bottom:6px;">Para arredondar, olhe para o algarismo <strong>logo depois</strong> da casa escolhida:</p>
+      <div class="round-rule-grid">
+        <span class="round-rule-chip down">0, 1, 2, 3 ou 4 → mantém</span>
+        <span class="round-rule-chip up">5, 6, 7, 8 ou 9 → sobe 1</span>
+      </div>
+      <div class="row" style="margin-top:16px;">
+        <div style="max-width:220px;"><label>Número</label><input type="text" id="rd-input" value="4,872" oninput="calcRounding()"></div>
+        <div>
+          <label>Arredondar para...</label>
+          <select id="rd-place" onchange="calcRounding()">
+            <option value="2">centena</option>
+            <option value="1">dezena</option>
+            <option value="0">unidade</option>
+            <option value="-1">décimo</option>
+            <option value="-2" selected>centésimo</option>
+            <option value="-3">milésimo</option>
+          </select>
+        </div>
+      </div>
+      <div class="result" id="rd-result"></div>
+      <div class="nl-wrap">
+        <div class="nl-track">
+          <div class="nl-fill" id="nl-fill"></div>
+          <div class="nl-end left" id="nl-end-left"></div>
+          <div class="nl-end right" id="nl-end-right"></div>
+          <div class="nl-marker" id="nl-marker"></div>
+          <div class="nl-marker-label" id="nl-marker-label"></div>
+        </div>
+        <div class="nl-caption"><span>menor</span><span>seu número entre os dois "vizinhos" arredondados</span><span>maior</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>✏️ Pratique</h3>
+      <div class="question">
+        <div class="q-text">a) Arredonde 4,872 para os centésimos.</div>
+        <div class="answer-row">
+          <input type="text" id="d1" placeholder="ex: 4,87">
+          <button class="action" onclick="checkDecimalAnswer('d1','4,87','O algarismo depois dos centésimos é 2 (o milésimo). Como 2 é menor que 5, mantemos: 4,872 → 4,87.')">Conferir</button>
+        </div>
+        <div class="feedback" id="d1-fb"></div>
+      </div>
+      <div class="question">
+        <div class="q-text">b) Arredonde 15,296 para os décimos.</div>
+        <div class="answer-row">
+          <input type="text" id="d2" placeholder="ex: 15,3">
+          <button class="action" onclick="checkDecimalAnswer('d2','15,3','O algarismo depois dos décimos é 9. Como 9 é maior ou igual a 5, o décimo sobe de 2 para 3: 15,296 → 15,3.')">Conferir</button>
+        </div>
+        <div class="feedback" id="d2-fb"></div>
+      </div>
+      <div class="question">
+        <div class="q-text">c) Em 0,529, qual algarismo ocupa a casa dos milésimos?</div>
+        <div class="answer-row">
+          <input type="text" id="d3" placeholder="0">
+          <button class="action" onclick="checkDecimalAnswer('d3','9','As casas depois da vírgula são: 5 = décimo, 2 = centésimo, 9 = milésimo.')">Conferir</button>
+        </div>
+        <div class="feedback" id="d3-fb"></div>
+      </div>
+      <div class="question">
+        <div class="q-text">d) Qual número é maior: 0,4 ou 0,39?</div>
+        <div class="answer-row">
+          <input type="text" id="d4" placeholder="0,4 ou 0,39">
+          <button class="action" onclick="checkDecimalAnswer('d4','0,4','Completando as casas: 0,40 e 0,39. Comparando os décimos, 4 é maior que 3, então 0,4 é o maior número.')">Conferir</button>
+        </div>
+        <div class="feedback" id="d4-fb"></div>
+      </div>
+      <div class="question">
+        <div class="q-text">e) Arredonde 2,5 para a unidade mais próxima.</div>
+        <div class="answer-row">
+          <input type="text" id="d5" placeholder="0">
+          <button class="action" onclick="checkDecimalAnswer('d5','3','O algarismo depois da unidade é 5, que já manda arredondar para cima: 2,5 → 3.')">Conferir</button>
+        </div>
+        <div class="feedback" id="d5-fb"></div>
+      </div>
     </div>
   </section>
 
@@ -970,6 +1122,118 @@ function checkFractionAnswer(inputId, correct, explanation){
     fb.innerHTML = `❌ Ainda não é isso. Resposta certa: <strong>${correct}</strong>` +
       (explanation ? `<div style="font-weight:400; margin-top:5px;">💡 ${explanation}</div>` : '');
   }
+}
+
+// ---------- DECIMAIS E ARREDONDAMENTO ----------
+function normalizeDecimalStr(raw){
+  let s = (raw || '').trim();
+  if(s.includes(',') && s.includes('.')){
+    s = s.replace(/\./g,'').replace(',', '.'); // ponto = milhar, vírgula = decimal
+  } else {
+    s = s.replace(',', '.');
+  }
+  return s;
+}
+
+function checkDecimalAnswer(inputId, correct, explanation){
+  const rawUser = document.getElementById(inputId).value;
+  const fb = document.getElementById(inputId+'-fb');
+  const normalize = s => s.trim().replace(/\s/g,'').replace('.', ',').toLowerCase();
+  const toNumber = s => { const n = parseFloat(normalizeDecimalStr(s)); return isNaN(n) ? null : n; };
+  const userNum = toNumber(rawUser), correctNum = toNumber(correct);
+  const numericMatch = (userNum!==null && correctNum!==null && Math.abs(userNum-correctNum) < 1e-9);
+  const isCorrect = normalize(rawUser) === normalize(correct) || numericMatch;
+  if(isCorrect){
+    fb.className='feedback correct'; fb.innerHTML='✅ Isso mesmo! Resposta: '+correct;
+  } else {
+    fb.className='feedback wrong';
+    fb.innerHTML = `❌ Ainda não é isso. Resposta certa: <strong>${correct}</strong>` +
+      (explanation ? `<div style="font-weight:400; margin-top:5px;">💡 ${explanation}</div>` : '');
+  }
+}
+
+function renderPlaceValue(){
+  const raw = document.getElementById('pv-input').value;
+  const boxesEl = document.getElementById('pv-boxes');
+  const readoutEl = document.getElementById('pv-readout');
+  const norm = normalizeDecimalStr(raw).replace('-','');
+  if(!/^\d*\.?\d*$/.test(norm) || norm===''||norm==='.'){
+    boxesEl.innerHTML=''; readoutEl.innerHTML='Digite um número válido (ex: 345,208).'; return;
+  }
+  let [intPartRaw, decPart=''] = norm.split('.');
+  const intPart = intPartRaw.replace(/^0+(?=\d)/,'') || '0';
+  const intLabels = ['unidade','dezena','centena','milhar','dezena de milhar','centena de milhar'];
+  const decLabels = ['décimo','centésimo','milésimo','décimo de milésimo'];
+  const intDigits = intPart.split('');
+  const decDigits = decPart.split('');
+
+  let html = '';
+  intDigits.forEach((d, idx)=>{
+    const posFromRight = intDigits.length-1-idx;
+    const label = intLabels[posFromRight] || (posFromRight+1)+'ª casa';
+    html += `<div class="pv-box"><div class="pv-digit">${d}</div><div class="pv-label">${label}</div></div>`;
+  });
+  html += `<div class="pv-comma">,</div>`;
+  if(decDigits.length===0){
+    html += `<div class="pv-box dim"><div class="pv-digit">0</div><div class="pv-label">décimo</div></div>`;
+  } else {
+    decDigits.forEach((d, idx)=>{
+      const label = decLabels[idx] || (idx+1)+'ª casa decimal';
+      html += `<div class="pv-box"><div class="pv-digit">${d}</div><div class="pv-label">${label}</div></div>`;
+    });
+  }
+  boxesEl.innerHTML = html;
+
+  let parts = [];
+  intDigits.forEach((d, idx)=>{
+    if(d==='0') return;
+    const posFromRight = intDigits.length-1-idx;
+    const label = intLabels[posFromRight] || (posFromRight+1)+'ª casa';
+    parts.push(`${d} ${label}${d!=='1'?'s':''}`);
+  });
+  decDigits.forEach((d, idx)=>{
+    if(d==='0') return;
+    const label = decLabels[idx] || (idx+1)+'ª casa decimal';
+    parts.push(`${d} ${label}${d!=='1'?'s':''}`);
+  });
+  const displayNum = norm.replace('.', ',');
+  readoutEl.innerHTML = parts.length
+    ? `<strong>${displayNum}</strong> = ${parts.join(' + ')}`
+    : `<strong>0</strong>`;
+}
+
+function calcRounding(){
+  const raw = document.getElementById('rd-input').value;
+  const place = parseInt(document.getElementById('rd-place').value, 10);
+  const placeArticles = {2:'das centenas', 1:'das dezenas', 0:'das unidades', '-1':'dos décimos', '-2':'dos centésimos', '-3':'dos milésimos'};
+  const value = parseFloat(normalizeDecimalStr(raw));
+  const resultEl = document.getElementById('rd-result');
+  if(isNaN(value)){ resultEl.classList.remove('show'); return; }
+
+  const factor = Math.pow(10, -place);
+  const scaled = value*factor;
+  const lowerScaled = Math.floor(scaled + 1e-9);
+  const upperScaled = lowerScaled+1;
+  const lower = lowerScaled/factor;
+  const upper = upperScaled/factor;
+  const frac = scaled - lowerScaled;
+  const nextDigit = Math.min(9, Math.max(0, Math.floor(frac*10 + 1e-6)));
+  const roundUp = nextDigit>=5;
+  const result = roundUp ? upper : lower;
+  const decimals = place<0 ? -place : 0;
+  const fmt = n => n.toFixed(decimals).replace('.', ',');
+
+  resultEl.classList.add('show');
+  resultEl.innerHTML = `<div class="big">${fmt(result)}</div>O algarismo logo depois da casa ${placeArticles[place]} é <strong>${nextDigit}</strong>. Como ${nextDigit} ${roundUp?'≥ 5, então sobe 1':'< 5, então mantém'}: ${fmt(value)} → <strong>${fmt(result)}</strong>.`;
+
+  const pos = Math.max(0, Math.min(100, (value-lower)/(upper-lower)*100));
+  document.getElementById('nl-fill').style.width = pos+'%';
+  const leftEl = document.getElementById('nl-end-left'), rightEl = document.getElementById('nl-end-right');
+  leftEl.textContent = fmt(lower); rightEl.textContent = fmt(upper);
+  leftEl.classList.toggle('on', !roundUp); rightEl.classList.toggle('on', roundUp);
+  const marker = document.getElementById('nl-marker'), markerLabel = document.getElementById('nl-marker-label');
+  marker.style.left = pos+'%'; markerLabel.style.left = pos+'%';
+  markerLabel.textContent = fmt(value);
 }
 
 // ---------- FRAÇÕES ----------
@@ -1638,6 +1902,12 @@ const quizData = [
   { q:"Uma TV de R$ 1.900,00 é comprada a prazo com 9% de acréscimo. Qual o valor final?",
     opts:["R$ 1.729,00","R$ 2.071,00","R$ 1.991,00","R$ 2.090,00"], correct:1,
     explain:"9% de 1900 = 171. Como é acréscimo (a prazo), somamos: 1900 + 171 = R$ 2.071,00." },
+  { q:"Arredondando 7,364 para os centésimos, obtemos:",
+    opts:["7,36","7,37","7,4","7,3"], correct:0,
+    explain:"O algarismo logo depois dos centésimos (o milésimo) é 4. Como 4 é menor que 5, mantemos: 7,364 → 7,36." },
+  { q:"Qual dos números abaixo é o maior?",
+    opts:["0,5","0,45","0,499","0,05"], correct:0,
+    explain:"Completando as casas: 0,50, 0,45, 0,499 e 0,05. Comparando primeiro os décimos, o 5 de 0,50 é o maior algarismo entre eles." },
 ];
 let quizAnswered = 0, quizScore = 0;
 
@@ -1695,6 +1965,8 @@ setupGrandezaUnificada();
 setupPercentMode();
 setupConverter();
 calcBigDivision();
+renderPlaceValue();
+calcRounding();
 </script>
 </body>
 </html>
