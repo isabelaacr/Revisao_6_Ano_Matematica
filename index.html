@@ -1206,7 +1206,8 @@ function calcRounding(){
   const raw = document.getElementById('rd-input').value;
   const place = parseInt(document.getElementById('rd-place').value, 10);
   const placeArticles = {2:'das centenas', 1:'das dezenas', 0:'das unidades', '-1':'dos décimos', '-2':'dos centésimos', '-3':'dos milésimos'};
-  const value = parseFloat(normalizeDecimalStr(raw));
+  const norm = normalizeDecimalStr(raw);
+  const value = parseFloat(norm);
   const resultEl = document.getElementById('rd-result');
   if(isNaN(value)){ resultEl.classList.remove('show'); return; }
 
@@ -1222,9 +1223,12 @@ function calcRounding(){
   const result = roundUp ? upper : lower;
   const decimals = place<0 ? -place : 0;
   const fmt = n => n.toFixed(decimals).replace('.', ',');
+  // O número ORIGINAL nunca deve perder casas na exibição — só o resultado é
+  // arredondado. Por isso usamos o texto exatamente como o usuário digitou.
+  const originalDisplay = norm.replace('.', ',');
 
   resultEl.classList.add('show');
-  resultEl.innerHTML = `<div class="big">${fmt(result)}</div>O algarismo logo depois da casa ${placeArticles[place]} é <strong>${nextDigit}</strong>. Como ${nextDigit} ${roundUp?'≥ 5, então sobe 1':'< 5, então mantém'}: ${fmt(value)} → <strong>${fmt(result)}</strong>.`;
+  resultEl.innerHTML = `<div class="big">${fmt(result)}</div>${originalDisplay} está entre <strong>${fmt(lower)}</strong> e <strong>${fmt(upper)}</strong>. O algarismo logo depois da casa ${placeArticles[place]} é <strong>${nextDigit}</strong>: como ${nextDigit} ${roundUp?'≥ 5, fica mais perto do maior':'< 5, fica mais perto do menor'}. Então ${originalDisplay} → <strong>${fmt(result)}</strong>.`;
 
   const pos = Math.max(0, Math.min(100, (value-lower)/(upper-lower)*100));
   document.getElementById('nl-fill').style.width = pos+'%';
@@ -1233,7 +1237,7 @@ function calcRounding(){
   leftEl.classList.toggle('on', !roundUp); rightEl.classList.toggle('on', roundUp);
   const marker = document.getElementById('nl-marker'), markerLabel = document.getElementById('nl-marker-label');
   marker.style.left = pos+'%'; markerLabel.style.left = pos+'%';
-  markerLabel.textContent = fmt(value);
+  markerLabel.textContent = originalDisplay;
 }
 
 // ---------- FRAÇÕES ----------
